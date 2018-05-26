@@ -1,0 +1,33 @@
+/*轮播图更新*/ 
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal{margin-bottom: 2rpx;}
+.swiper-box .wx-swiper-dot{width:13rpx; display: inline-flex; height: 13rpx; margin-left: 10rpx; justify-content:space-between;}
+.swiper-box .wx-swiper-dot::before{content: ''; flex-grow: 1; background: #fff; border-radius: 13rpx}
+.swiper-box .wx-swiper-dot-active::before{background:#ff495e;}
+/*热门商品*/
+ .index_sale .price{font-size:30rpx; color:#ff495e; margin-top:10rpx; display: block; text-align: center;}
+.index-title{padding:16rpx 12px;border-bottom:1px solid #f6f6f9}
+.index-title .title{font-size:30rpx;color:#333; padding-left:4rpx;}
+.index-title .icon-shugang{font-size:28rpx;}
+.bargain-btn{font-size:28rpx; position: absolute;display: inline-block;right:15rpx;bottom:15rpx;border-radius:35rpx;color:#fff;padding:7rpx 30rpx; background: -webkit-linear-gradient(left bottom,#ff495e,#FC5B9E); background: -o-linear-gradient(left bottom,#ff495e,#FC5B9E); background: -mos-linear-gradient(left bottom,#ff495e,#FC5B9E); background: -moz-linear-gradient(left bottom,#ff495e,#FC5B9E); background: linear-gradient(left bottom,#ff495e,#FC5B9E);}
+.bargain-num{background:rgba(0,0,0,0.5);border-radius:18rpx;font-size:22rpx;position:absolute;right:20rpx;bottom:20rpx;color:#fff;padding:5rpx 15rpx;}
+
+
+/*拼团*/
+
+/*广告位*/
+.index-activity-list .left image,.index-activity-list .right .right-top image, .index-activity-list .right .right-bottom image{width:375rpx;}
+.index-activity-list .li:first-child{border-right:1rpx solid #e4e4e4}
+.group-list .group-num{padding-right:10rpx}
+/*子频道*/
+.group-channel-list .li .img{width:120rpx;height:120rpx;border-radius:100%;overflow:hidden;margin:0 auto;}
+.group-channel-list .li .img image{width:120rpx;height:120rpx;}
+.m-top-height{margin-top:84rpx;}
+.group-list .right{border-right:1rpx solid #e4e4e4}
+/*消息提示*/
+.index-fixed-box{height:60rpx;background:rgba(0,0,0,0.5);position:fixed; top:30rpx; left:15rpx;z-index:30;color:#fff;line-height:2.4rem;border-radius: 1.4rem;}
+.index-fixed-imgbox{width:65rpx;}
+.index-header-img{height:60rpx; width:60rpx;border-radius: 100%;overflow: hidden;}
+.index-header-img image{height:60rpx; width:60rpx;}
+.index-fixed-box .title{padding:0 20rpx 0 10rpx;font-size:26rpx;line-height:60rpx;display:block;}
+.index-fixed-box .title text{color:#ccc;}
+.group-top{margin-top:80rpx;}

@@ -1,0 +1,42 @@
+<view class="container">
+  <view class="common-header-xian"></view>
+  <scroll-view class="list" scroll-y="true" style="height:{{scrollHeight}}px;">
+    <view class="cont-box search-max-box">
+      <!--search-header-->
+      <view class="dis-box search-input-box">
+        <view class="search-input">
+          <view class="dis-box search-box">
+            <view class="left">
+              <icon type="search" size="{{searchSize}}" color="{{searchColor}}" />
+            </view>
+            <view class="right box-flex">
+              <input class="input" type="text" focus="true" maxlength='20' placeholder-style="color:#aba9a9" placeholder="请输入您搜索的商品" bindinput="getSearchContent" />
+            </view>
+          </view>
+        </view>
+        <view class="serch-button">
+          <button type="warn" bindtap="search"> 搜索 </button>
+        </view>
+      </view>
+    </view>
+    <view class="cont-box ">
+      <!--最近搜索-->
+      <view class="search-cont-box" wx:if="{{hotrecent != ''}}">
+        <view class="title-box">最近搜索
+          <text class="iconfont icon-lajixiang col-7" bindtap="clearSearch"></text>
+        </view>
+        <view class="sale-button-box">
+          <view class='seconds-kill-li' wx:for="{{hotrecent}}" wx:for-index="idx" wx:for-item="recent" wx:key="hotrecent">
+            <view class="recent-button" bindtap='gosearch' data-text="{{recent}}">{{recent}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="search-footer" bindtap="closeSearch">
+    <view class="title-hrbg" style="margin-top:10rpx">
+      <text class="cont" style="background:#fff">关闭搜索</text>
+      <view class="hr"></view>
+    </view>
+  </view>
+</view>

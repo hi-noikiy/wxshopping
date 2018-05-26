@@ -1,0 +1,445 @@
+<import src="../../wxParse/wxParse.wxml" />
+<block wx:if="{{goodsCont!= undefined}}">
+  <scroll-view scroll-y="{{isScroll}}" bindscroll="scroll" scroll-top="{{scrollTop}}" style="position:absolute; top:0; left:0; right:0; bottom:0;">
+    <view class="container">
+      <view class="common-header-xian"></view>
+      <!--详情相册-->
+      <view class="goods-swiper" bindtap="imgPreview">
+        <swiper autoplay="{{true}}" bindchange="setCurrent" indicator-dots="{{indicatorDots}}" interval="{{interval}}" circular="true" duration="{{duration}}" class="goods-box" style="border-bottom:none;">
+          <block wx:for="{{goodsCont.goods_img}}" wx:key="goodsImg">
+            <swiper-item>
+              <image src="{{item}}" mode="aspectFill" class="slide-image" />
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="num">
+          <text>{{currentIndex>9?currentIndex:currentIndex}}</text>
+          <text>/{{goodsCont.goods_img.length>9?goodsCont.goods_img.length:goodsCont.goods_img.length}}</text>
+        </view>
+      </view>
+      <!--活动标题-->
+      <view class="goods-bargain-img countDownTimeView countDownAllView">
+        <view class="dis-box">
+          <view class="left box-flex">
+            <view class="dis-box">
+              <view class="bargain-icon dis-box">
+                <view class="b-f icon">
+                  <text class="iconfont icon-shehuituanti "></text>
+                </view>
+                <view class="">
+                  <text class="f-22 bargain-num-group ">{{goodsCont.goods_info.team_num}}人团</text>
+                </view>
+              </view>
+              <view class="box-flex pro-num m-top10">
+                {{group_property.goods_price_formated?group_property.goods_price_formated:goodsCont.goods_info.team_price}}
+                <text class="del" style="font-size:22rpx;color:#fff">{{property.market_price_formated?property.market_price_formated:goodsCont.goods_info.market_price}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="cont-box b-f">
+        <!--标题-->
+        <view class="goods-title dis-box">
+          <text class="f-31 twolist-hidden box-flex">
+          <text class="tag">拼</text>{{goodsCont.goods_info.goods_name}}</text>
+        </view>
+        <view class="sales f-28 dis-box m-top20 col-7">
+          <text class="box-flex">销量：{{goodsCont.goods_info.sales_volume}}</text>
+          <text class="box-flex t-r">库存：{{property.stock?property.stock:goodsCont.goods_info.stock}} </text>
+        </view>
+      </view>
+      <!--拼团介绍-->
+      <block wx:if="{{goodsCont.goods_info.team_desc!=''}}">
+        <view class="b-f goods-property-box bargain-play m-top20 " style="border-bottom:1px solid #f6f6f9" bindtap='groupPlay'>
+          <view class="col-3 f-31">拼团介绍</view>
+          <view class="m-top4">
+            <text class="f-26 col-6">{{goodsCont.goods_info.team_desc}}</text>
+          </view>
+        </view>
+      </block>
+      <!--拼团玩法-->
+      <view class="dis-box b-f goods-property-box bargain-play m-top20 " style="border-bottom:1px solid #f6f6f9" bindtap='groupPlay'>
+        <view class="box-flex col-3 f-31">拼团玩法</view>
+        <view class="f-28 col-7 more">查看更多</view>
+        <view class="goods-property-jianTou">
+          <text class="iconfont icon-msnui-rightmini user-orderJtou"></text>
+        </view>
+      </view>
+      <view class=" b-f goods-property-box  common-title-box">
+        <view class="dis-box group-detail-cont bargain-detail-cont f-03 text-c col-6 p-r">
+          <view class="box-flex p-r">
+            <view class="num-left">
+              <text class="em f-24">1</text>
+
+            </view>
+            <view class="p f-24 t-c">选择商品</view>
+            <view class="n-list-xian-first p-a"></view>
+          </view>
+          <view class="box-flex p-r">
+            <view class="num-left">
+              <text class="em f-24">2</text>
+
+            </view>
+            <view class="p f-24 t-c">开团/参团</view>
+            <view class="n-list-xian p-a"></view>
+          </view>
+          <view class="box-flex p-r">
+            <view class="num-left">
+              <text class="em f-24">3</text>
+
+            </view>
+            <view class="p f-24 t-c">邀请好友</view>
+            <view class="n-list-xian p-a"></view>
+          </view>
+          <view class="box-flex p-r">
+            <view class="num-left">
+              <text class="em f-24">4</text>
+
+            </view>
+            <view class="p f-24 t-c">人满成团</view>
+            <view class="n-list-xian-last p-a"></view>
+          </view>
+        </view>
+      </view>
+
+      <view wx:for="{{wearList.team_log}}" wx:for-item="item" wx:key="id">
+        <view class='dates'></view>
+      </view>
+      <view wx:if="{{goodsCont.team_log!=''}}" class="group-wait-ul cont-box b-f">
+        <view class="title col-7 f-26">不想开团，和以下小伙伴一起拼了</view>
+        <view class="li" wx:for="{{goodsCont.team_log}}" wx:key="team_log">
+          <view class="cont dis-box">
+            <view class="img">
+              <image src="{{item.user_picture}}"></image>
+            </view>
+            <view class="name box-flex" style="margin-top:6rpx">
+              <view class="dis-box">
+                <view class="box-flex col-3 f-30">{{item.user_name}}</view>
+                <view class="box-flex col-7 f-26">还差
+                  <text class="col-m">{{item.surplus}}</text>人成团</view>
+              </view>
+              <view class="f-24 col-7 m-top4">剩余{{item.difftime}}结束</view>
+            </view>
+            <view class="right p-r" bindtap="{{(item.is_team == '1' ? 'goodsWaitId':'goodsWait')}}" id="addcheckoutid" data-index="{{index}}">
+              <text class="btn-wait f-28">去参团</text>
+              <text class="iconfont icon-xiangyoujiantou"></text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--店铺-->
+      <block wx:if="{{goodsCont.detail!= undefined}}">
+        <view class="goods-store cont-box p-r m-top20 b-f " bindtap='storeDetail'>
+          <view class=" dis-box">
+            <view class="left">
+              <view class="store-img">
+                <image src="{{goodsCont.detail.sellershopinfo.logo_thumb}}"></image>
+              </view>
+            </view>
+            <view class="right">
+              <text class="pl-12 store_name f-30 col-3 ">{{goodsCont.shop_name}}</text>
+              <text class="f-24 col-3 pl-12">已有<text class="col-m">{{goodsCont.coll_num}}</text>人关注</text>
+              <view class="goods-property-jianTou">
+                <text class="iconfont icon-msnui-rightmini user-orderJtou"></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <!--评论-->
+      <block wx:if="{{goodsComment!=''}}">
+        <view class="dis-box cont-box b-f goods-property-box common-title-box m-top20">
+          <text class="col-3 f-31 l-title">评价</text>
+          <view class="box-flex">
+            <text class="fr f-31">共<text class="col-m">{{goodsCont.total_comment_number}}</text>条评论</text>
+          </view>
+        </view>
+        <view class="goods_comment_box b-f">
+          <block wx:for="{{goodsComment}}" wx:key="goodsComment">
+            <view class="cont-box goods-comment-box b-t b-f b-b">
+              <text class="admin">{{item.user_name}}</text>
+              <view class="com_xing">
+                <text class="iconfont icon-shoucang1 {{item.comment_rank > 0 ? 'active ' : ''}}"></text>
+                <text class="iconfont icon-shoucang1 {{item.comment_rank > 1 ? 'active ' : ''}}"></text>
+                <text class="iconfont icon-shoucang1 {{item.comment_rank > 2 ? 'active ' : ''}}"></text>
+                <text class="iconfont icon-shoucang1 {{item.comment_rank > 3 ? 'active ' : ''}}"></text>
+                <text class="iconfont icon-shoucang1 {{item.comment_rank > 4 ? 'active ' : ''}}"></text>
+              </view>
+              <view class="goods-comment-cont m-top20">{{item.content}}</view>
+              <view class="f-22 col-9 m-top10">{{item.add_time}}</view>
+            </view>
+          </block>
+        </view>
+
+        <view class="b-f goods-property-box dis-box oh common-title-box" bindtap="toChild">
+          <view class="col-9 f-28">
+            <text class="fl">共{{goodsCont.total_comment_number}}条评论</text>
+          </view>
+          <view class=" box-flex">
+            <text class="fr  f-28 col-9" style="padding-right:30rpx">查看更多</text>
+          </view>
+          <view class="goods-property-jianTou">
+            <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+          </view>
+        </view>
+
+      </block>
+      <!--精品推荐-->
+      <block wx:if="{{goodsCont.new_goods!=''}}">
+        <view class="weui-panel__hd b-f m-top20">精选商品</view>
+        <view class="index_sale p-top20">
+          <scroll-view scroll-x="true">
+            <navigator wx:for-items="{{goodsCont.new_goods}}" wx:key="boutique_list" url="../group/goods?objectId={{item.goods_id}}" hover-class="none" style="display: inline-block;">
+              <view class="page-column">
+                <view class="sale_img">
+                  <image src="{{item.goods_thumb}}" mode="aspectFill" />
+                </view>
+                <view class="content onelist-hidden ">
+                  <text>{{item.goods_name}}</text>
+                </view>
+                <text class="price col-m f-30">{{item.team_price}}</text>
+              </view>
+            </navigator>
+          </scroll-view>
+        </view>
+      </block>
+
+      <!--商品描述-->
+      <view class="p-bottom">
+        <view class="top-nav m-top20 b-f b-b">
+          <view class="top-nav-bar">
+            <view bindtap="toOrder" id="top-nav-bar-{{!hiddenOrder ? true : 0}}">
+              <span>商品描述</span>
+            </view>
+            <view bindtap="toAddress" id="top-nav-bar-{{!hiddenAddress ? true : 0}}">
+              <span>规格参数</span>
+            </view>
+          </view>
+        </view>
+        <!--商品描述-->
+        <view hidden="{{hiddenOrder}}" class="order">
+          <view wx:if="{{goods.goods_desc!= ''}}">
+            <view class="b-f goods-detail-box">
+              <view class="goods-cont-li">
+                <template is="wxParse" data="{{wxParseData:goods_desc.nodes}}" />
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <view class="ectouch-notcont">
+              <view class="img">
+                <image src="../../images/no_content.png" mode="aspectFit" />
+              </view>
+              <text class="cont">亲,此处暂无详情数据</text>
+            </view>
+          </view>
+        </view>
+        <!--规格参数-->
+        <view hidden="{{hiddenAddress}}" class="address">
+          <view wx:if="{{parameteCont!=''}}">
+            <block wx:for="{{parameteCont}}" wx:key="parameteCont">
+              <view class="dis-flex paramete-cont" wx:for="{{item}}" wx:key="item">
+                <view class="li flex-five">{{item.name}}：</view>
+                <view class="li flex-five">
+                  <text>{{item.value}}</text>
+                </view>
+              </view>
+            </block>
+          </view>
+          <view wx:else>
+            <view class="ectouch-notcont">
+              <view class="img">
+                <image src="../../images/no_content.png" mode="aspectFit" />
+              </view>
+              <text class="cont">亲,此处暂无规格数据</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 提交订单 -->
+      <view class="footer-fixed f-34">
+        <view class="goods-fixed-icon" bindtap="groupHome">
+          <view class="bargain-icon">
+            <image src="../../images/nav_group_active.png"></image>
+          </view>
+          <view class="bargain-home f-22 col-3">拼团首页</view>
+        </view>
+        <view class="order-number" style="line-height:inherit;" id="cart" bindtap="onChangeShowState">
+          <view class="f-34 m-top4">{{property.goods_price_formated?property.goods_price_formated:goodsCont.goods_info.goods_price}}</view>
+          <view class="f-26">单独购买</view>
+        </view>
+        <view class="order-bt" style="line-height:inherit;" id="checkout" bindtap="groupProperty">
+          <view class="f-34 m-top4">{{group_property.goods_price_formated?group_property.goods_price_formated:goodsCont.goods_info.team_price}}</view>
+          <view class="f-26">我要开团</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!--单独购买属性弹框-->
+  <view class="group-property-mol bargain-mol ts-3 {{showViewProperty?'active':''}}">
+    <view class="cart_close modal-close" bindtap="onChangeShowState">
+      <icon type="clear" size="20" color="#ccc" />
+    </view>
+    <view class="cont-box">
+      <view class="dis-box cart_product">
+        <view class="cart_product_img">
+          <image src="{{property.attr_img?property.attr_img:goodsCont.goods_info.goods_thumb}}" />
+        </view>
+        <view class="cart_product_info">
+          <view class="onelist-hidden f-30 h4">{{goodsCont.goods_info.goods_name}}</view>
+          <view class="cart_product_price">{{property.goods_price_formated?property.goods_price_formated:goodsCont.goods_info.goods_price}}</view>
+          <view class="cart_product_repertory">库存 {{property.stock?property.stock:goodsCont.goods_info.stock}} 件</view>
+        </view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" class="max-cont">
+      <view class="cart">
+        <view class="modal_cont_box">
+          <block wx:if="{{item.values[0].label!=''}}" wx:for="{{properties}}" wx:for-index="attr_id" wx:key="carModels">
+            <view class="cf tmall-types common-title-box dis-box">
+              <text class="tipstxt l-title" id="{{attr_id}}">{{item.name}}</text>
+              <view class="box-flex">
+                <view class="cf cartypelist" wx:for="{{item.values}}" wx:for-index="attr_id_child" wx:key="carModelChild">
+                  <block wx:if="{{item.label!=''}}">
+                    <block wx:if="{{item.checked}}">
+                      <view class="cartypeitem cur" id="{{item.id}}" bindtap="modelTap">{{item.label}}</view>
+                    </block>
+                    <block wx:else>
+                      <view class="cartypeitem" id="{{item.id}}" bindtap="modelTap">{{item.label}}</view>
+                    </block>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class="buy_number common-title-box dis-box">
+            <view class="buyNumber f-28 l-title">
+              <text>数量</text>
+            </view>
+            <view class="selectNumber">
+              <button type="default" class="default  {{num >1  ? '' : ' default-active'}}" bindtap="down">-</button>
+              <input type="number" value="{{ num }}" bindinput="import" />
+              <button type="default" class="default" bindtap="up">+</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="footer f-28 col-6  dis-box t-c">
+      <!-- <view class="order-number box-flex" id="cart" bindtap="goodsCheckout">
+          <view class="f-30">加入购物车</view>
+        </view> -->
+      <view class="box-flex" style="width:100%" id="checkout" bindtap="goodsCheckout">
+        <view class="f-30">立即购买</view>
+      </view>
+    </view>
+  </view>
+  <!--拼团属性弹框-->
+  <view class="group-property-mol bargain-mol ts-3 {{showViewGroupProperty?'active':''}}">
+    <view class="cart_close modal-close" bindtap="groupProperty">
+      <icon type="clear" size="20" color="#ccc" />
+    </view>
+    <view class="cont-box">
+      <view class="dis-box cart_product">
+        <view class="cart_product_img">
+          <image src="{{property.attr_img?property.attr_img:goodsCont.goods_info.goods_thumb}}" />
+        </view>
+        <view class="cart_product_info">
+          <view class="onelist-hidden f-30 h4">{{goodsCont.goods_info.goods_name}}</view>
+          <view class="cart_product_price">
+            <text class="f-24 col-7">{{goodsCont.goods_info.team_num}}人团</text> {{group_property.goods_price_formated?group_property.goods_price_formated:goodsCont.goods_info.team_price}}
+          </view>
+          <view class="cart_product_repertory">库存 {{property.stock?property.stock:goodsCont.goods_info.stock}} 件
+            <text class="col-m f-24">(限购:{{goodsCont.goods_info.astrict_num}}件)</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" class="max-cont">
+      <view class="cart">
+        <view class="modal_cont_box">
+          <block wx:if="{{item.values[0].label!=''}}" wx:for="{{properties}}" wx:for-index="attr_id" wx:key="carModels">
+            <view class="cf tmall-types common-title-box dis-box">
+              <text class="tipstxt l-title" id="{{attr_id}}">{{item.name}}</text>
+              <view class="box-flex">
+                <view class="cf cartypelist" wx:for="{{item.values}}" wx:for-index="attr_id_child" wx:key="carModelChild">
+                  <block wx:if="{{item.label!=''}}">
+                    <block wx:if="{{item.checked}}">
+                      <view class="cartypeitem cur" id="{{item.id}}" bindtap="groupModelTap">{{item.label}}</view>
+                    </block>
+                    <block wx:else>
+                      <view class="cartypeitem" id="{{item.id}}" bindtap="groupModelTap">{{item.label}}</view>
+                    </block>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class="buy_number common-title-box dis-box">
+            <view class="buyNumber f-28 l-title">
+              <text>数量</text>
+            </view>
+            <view class="selectNumber">
+              <button type="default" class="default  {{groupNum>1  ? '' : ' default-active'}}" bindtap="groupDown">-</button>
+              <input type="number" value="{{groupNum}}" bindinput="groupImport" />
+              <button type="default" class="default" bindtap="groupUp">+</button>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </scroll-view>
+    <view class="footer f-28 col-6  t-c" style="background:none;padding:0">
+      <button type="button" class="cart_sure h3" id="{{id}}" bindtap="goodsCheckout"> 确 定 </button>
+    </view>
+  </view>
+  <!--玩法模态框-->
+  <view class="bargain-paly-mol bargain-mol ts-3 {{showViewPlay?'active':''}}">
+    <view class="header dis-box cont-box f-28 col-3">
+      <view class="box-flex f-30">拼团玩法</view>
+      <view class="box-flex">
+        <text class="iconfont icon-guanbi" bindtap='bargainPlayclose'></text>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" class="max-cont">
+      <view class="ul">
+        <view class="li">1.开团：在商城内选择喜欢的商品，点击“去开团”，付款成功后即为开团成功；</view>
+        <view class="li">2.参团：进入朋友分享的页面，点击“立即参团”，付款后即为参团成功，若多人同时支付，按先支付成功的用户获得参团资格，参团订单未支付不计入参团数量，团过期未支付订单失效，但参团人信息也会显示在团里面；</view>
+        <view class="li">3.成团：在开团或参团之后,可以点击“分享出去”，在有效时间凑齐成团人数即拼团成功；</view>
+        <view class="li">4.组团失败：在有效时间内未凑齐人数，即为组团失败，此时商城会将原款分别退回；</view>
+      </view>
+    </scroll-view>
+    <view class="footer f-34 col-6 cont-box t-c" bindtap='bargainPlayclose'>确 定</view>
+  </view>
+  <view class="widget-goTop" bindtap="goTop" wx:if="{{ floorstatus }}">
+    <text class="iconfont icon-fanhuidingbu"></text>
+  </view>
+  <!--悬浮导航-->
+  <view class="filter-menu {{nav_select?'active':''}}">
+    <view class="filter-menu-list ts-5">
+      <custom-ul>
+        <custom-li bindtap="nav" data-index="home">
+          <text class="iconfont icon-home"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="fenlei">
+          <text class="iconfont icon-fenlei"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="cart">
+          <text class="iconfont icon-cart"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="profile">
+          <text class="iconfont icon-profile"></text>
+        </custom-li>
+        <custom-li class="w"></custom-li>
+      </custom-ul>
+    </view>
+    <view class="filter-menu-title" bindtap='commonNav'></view>
+  </view>
+  <!--遮罩层-->
+  <view class="bargain-commont-bg hide{{showViewMol?'show':''}}">
+  </view>
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>

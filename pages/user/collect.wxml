@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="common-header-xian"></view>
+  <view wx:if="{{list !=''}}">
+    <view class="items m-top20">
+      <view class="category-list arrange">
+        <view class="list b-f" wx:for="{{list}}" wx:key="list">
+          <view class="left">
+            <navigator url="../goods/index?objectId={{item.goods_id}}" hover-class="none">
+              <view class="img">
+                <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+              </view>
+            </navigator>
+          </view>
+          <view class="right">
+            <view class="cont">
+              <navigator url="../goods/index?objectId={{item.goods_id}}" hover-class="none">
+                <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+                <view class="price f-34 col-m m-top10">{{item.shop_price}}
+                  <text class="del f-22">{{item.market_price_formated}}</text>
+                </view>
+              </navigator>
+              <view data-index="{{index}}" bindtap="delCollect" class="collect-del fr">
+                <text class="iconfont icon-lajixiang"></text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="ectouch-notcont">
+      <view class="img">
+        <image src="../../images/no_content.png" mode="aspectFit" />
+      </view>
+      <text class="cont">亲，您还没有收藏商品哦</text>
+    </view>
+  </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

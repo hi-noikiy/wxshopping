@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="common-header-xian"></view>
+  <view class="page__input">
+    <!-- <view class="weui-cells__title">个人资料</view> -->
+    <view class="weui-cells weui-cells_form">
+      <view class="weui-cell">
+        <view class="weui-cell__hd">
+          <label class="weui-label f-30">账号</label>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input f-30" type="number" pattern="[0-9]*" placeholder=" {{userInfo.nickName}}" />
+        </view>
+      </view>
+      <navigator url="../profile/edit_mobile" hover-class="navigator-hover">
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <label class="weui-label f-30">手机号码</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input f-30" type="number" pattern="[0-9]*" placeholder="15618323668" />
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,123 @@
+<view class="container">
+  <view class="common-header-xian"></view>
+  <view class="top-nav b-f">
+    <view class="top-nav-bar">
+      <view bindtap="noUse" id="top-nav-bar-{{!hiddenNo ? true : 0}}" data-index="0">
+        <span>未使用</span>
+      </view>
+      <view bindtap="hasUse" id="top-nav-bar-{{!hiddenHas ? true : 0}}" data-index="1">
+        <span> 已使用</span>
+      </view>
+      <view bindtap="useEnd" id="top-nav-bar-{{!hiddenEnd ? true : 0}}" data-index="2">
+        <span>已过期</span>
+      </view>
+    </view>
+  </view>
+  <!--未使用-->
+  <view hidden="{{hiddenNo}}" class="coupons-list">
+    <block wx:if="{{couponsData.tab !=''}}">
+      <coupons-ul class="goods-coupon-cont">
+        <block wx:for="{{couponsData.tab}}" wx:key="goodsCoupons">
+          <coupons-li class=" dis-box oh b-f">
+            <view class="max-left box-flex">
+              <view class="coupons-box dis-box">
+                <view class=" left">
+                  <text class="sup">¥</text>
+                  <text class="price">{{item.cou_money}}</text>
+                </view>
+                <view class="box-flex right f-24">
+                  <text class="s_name f-24">{{item.cou_title}}</text>
+                  <text class="s_cont f-24 col-3">{{item.cou_name}}</text>
+                </view>
+              </view>
+              <view class="f-24 col-7 m-top4">{{item.cou_start_time}} 至 {{item.cou_end_time}}</view>
+            </view>
+          </coupons-li>
+        </block>
+      </coupons-ul>
+    </block>
+    <block wx:else>
+      <view class="ectouch-notcont">
+        <view class="img">
+          <image src="../../images/no_content.png" mode="aspectFit" />
+        </view>
+        <text class="cont">亲，没有内容哦</text>
+      </view>
+    </block>
+  </view>
+
+  <!--已使用-->
+  <view hidden="{{hiddenHas}}" class="coupons-list">
+    <block wx:if="{{couponsData.tab !=''}}">
+      <coupons-ul class="goods-coupon-cont">
+        <block wx:for="{{couponsData.tab}}" wx:key="goodsCoupons">
+          <coupons-li class=" dis-box oh b-f">
+            <view class="max-left box-flex" >
+              <view class="coupons-box dis-box {{couponsData.status=='1'?'active':''}}">
+                <view class=" left">
+                  <text class="sup">¥</text>
+                  <text class="price">{{item.cou_money}}</text>
+                </view>
+                <view class="box-flex right f-24">
+                  <text class="s_name f-24">{{item.cou_title}}</text>
+                  <text class="s_cont f-24 col-3">{{item.cou_name}}</text>
+                </view>
+              </view>
+              <view class="f-24 col-7 m-top4">{{item.cou_start_time}} 至 {{item.cou_end_time}}</view>
+              <block wx:if="{{couponsData.status == 1}}">
+                <view class="print-img">
+                  <image src="../../images/coupons-print-end.png"></image>
+                </view>
+              </block>
+            </view>
+          </coupons-li>
+        </block>
+      </coupons-ul>
+    </block>
+    <block wx:else>
+      <view class="ectouch-notcont">
+        <view class="img">
+          <image src="../../images/no_content.png" mode="aspectFit" />
+        </view>
+        <text class="cont">亲，没有内容哦</text>
+      </view>
+    </block>
+  </view>
+  <!-- 已过期-->
+  <view hidden="{{hiddenEnd}}" class="coupons-list">
+    <block wx:if="{{couponsData.tab !=''}}">
+      <coupons-ul class="goods-coupon-cont">
+        <block wx:for="{{couponsData.tab}}" wx:key="goodsCoupons">
+          <coupons-li class=" dis-box oh b-f">
+            <view class="max-left box-flex">
+              <view class="coupons-box dis-box {{couponsData.status=='2'?'active':''}}">
+                <view class=" left">
+                  <text class="sup">¥</text>
+                  <text class="price">{{item.cou_money}}</text>
+                </view>
+                <view class="box-flex right f-24">
+                  <text class="s_name f-24">{{item.cou_title}}</text>
+                  <text class="s_cont f-24 col-3">{{item.cou_name}}</text>
+                </view>
+              </view>
+              <view class="f-24 col-7 m-top4">{{item.cou_start_time}} 至 {{item.cou_end_time}}</view>
+              <block wx:if="{{couponsData.status == 2}}">
+                <view class="print-img">
+                  <image src="../../images/coupons-print-enddata.png"></image>
+                </view>
+              </block>
+            </view>
+          </coupons-li>
+        </block>
+      </coupons-ul>
+    </block>
+    <block wx:else>
+      <view class="ectouch-notcont">
+        <view class="img">
+          <image src="../../images/no_content.png" mode="aspectFit" />
+        </view>
+        <text class="cont">亲，没有内容哦</text>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="common-header-xian"></view>
+  <view wx:if="{{storeList !=''}}">
+    <block wx:for="{{storeList}}" wx:key="storeList">
+      <view class="store-header p-r b-f">
+        <view class="cont dis-box" style="position:static">
+          <navigator class="left" url="../store/index?objectId={{item.ru_id}}" hover-class="none">
+            <view class="store-img">
+              <image src="{{item.logo_thumb}}"></image>
+            </view>
+          </navigator>
+          <navigator class="right" url="../store/index?objectId={{item.ru_id}}" hover-class="none">
+            <text class="pl-12 store_name f-30 col-3 ">{{item.store_name}}</text>
+            <text class="f-24 col-3 pl-12">已有<text class="col-m">{{item.collectnum}}</text>人关注</text>
+          </navigator>
+        </view>
+        <view bindtap="onChangeShowAttention" class="store_attention_button" data-index="{{index}}">
+          <text class="f-24  button-cont">  取消关注</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:else>
+    <view class="ectouch-notcont">
+      <view class="img">
+        <image src="../../images/no_content.png" mode="aspectFit" />
+      </view>
+      <text class="cont">亲，您还没有关注店铺哦</text>
+    </view>
+  </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

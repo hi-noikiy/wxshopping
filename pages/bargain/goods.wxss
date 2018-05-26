@@ -1,0 +1,203 @@
+/*banner*/
+.banner-box{height: 750rpx; border-bottom: 1rpx solid #e4e4e4;}
+.user-orderJtou{color: #999; font-size: 26rpx; position: absolute;}
+.goods-fixed-icon text{color: #fff; font-size: 22rpx; text-align: center; display: block;}
+
+/*分享*/
+.goods-sharing-icon{font-size:42rpx;padding-left:20rpx; color:#666}
+/*优惠券*/
+.goods-coupons-box .image{display:inline-block;width:96rpx;height:36rpx;position: absolute;top:50%;margin-top:-21rpx}
+.goods-coupons-box .image image{width:100%;height:100%;display: block;margin-top:5rpx;
+}
+.goods-coupons-box .text{padding-left: 110rpx;color:#333;}
+.common-title-box .l-title{width:80rpx;display:block;}
+
+.goods-coupon-cont coupons-li .max-right.active{ background:#ccc;color:#efefef}
+.goods-bargain-img {
+  background: -webkit-linear-gradient(left bottom,#ff495e,#f4a213);  
+  background: -o-linear-gradient(left bottom,#ff495e,#f4a213);  
+  background: -mos-linear-gradient(left bottom,#ff495e,#f4a213);  
+  background: -moz-linear-gradient(left bottom,#ff495e,#f4a213);  
+  background: linear-gradient(left bottom,#ff495e,#f4a213);
+    text-align: center;
+    z-index: 10;
+    color: #fff;
+    font-size: 28rpx;
+    padding: 14rpx 24rpx;
+}
+.goods-bargain-img .name{padding:0 8rpx 0 6rpx;color:#fff;font-size:22rpx}
+.goods-bargain-img .voteText{border:1rpx solid #FA2E46;
+border-radius:4px;
+color:#FA2E46;
+font-size:26rpx;
+margin:10rpx 0 10rpx;
+padding:0 10rpx;
+}
+.goods-bargain-img .left .bargain-icon{border:1px solid #fff;border-radius: 4px;margin-top:12rpx;}
+.goods-bargain-img .left .icon-shehuituanti{background:#fff;color:#ff495e;padding: 7rpx 8rpx 0 8rpx;display:block;
+}
+.goods-bargain-img .left .bargain-num{padding: 0 8rpx}
+.goods-bargain-img .left .pro-num{font-size:38rpx;text-align:left;padding-left:8rpx;
+}
+.goods-bargain-img .right .name{font-size:18rpx;padding: 0 5rpx 0 5rpx}
+.bargain-radio{background:#FFD9BF;height:70rpx;}
+.bargain-radio .swiper-radio{height:70rpx;line-height:70rpx;}
+.bargain-radio .right{padding-left:12rpx;}
+.bargain-radio .left{padding-right:12rpx;line-height:1;}
+.bargain-radio .left .icon-iconxx2{position:absolute;left:20rpx;top:50%;margin-top:-15rpx;}
+.bargain-radio .left .title-left{padding-left:60rpx;display:block;line-height:70rpx;}
+.raise-progressBar .wrap{margin-bottom:12px}
+.raise-progressBar .wrap{position:relative;margin-bottom:8px;height:5px;border-radius:5px;background-color:#efeeee;overflow:hidden}
+.raise-progressBar .bar,.raise-progressBar .color{display:block;height:100%;border-radius:4px}
+.raise-progressBar .color{width:100%;background:#FFA538;background:-webkit-gradient(linear,left top,right top,from(#FFCB3D),to(#ff495e));background:-moz-linear-gradient(left,#FFCB3D,#ff495e);background:-o-linear-gradient(left,#FFCB3D,#ff495e);background:-ms-linear-gradient(left,#FFCB3D,#ff495e)}
+.plan-common{width: 14rpx; height: 14rpx; border-radius: 14rpx; position: absolute; top: 50%; margin-top: -.6rem; z-index:5;}
+.plan-left{border: 3px solid #ff495e; left: -.6rem;}
+.plan-right{border: 3px solid #efeeee; right: -.6rem;}
+.goods-bargain-list .li{  border-bottom: 1px solid #F6F6F9;padding: 12px;}
+.goods-bargain-list .li .header {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
+    overflow: hidden;
+    border: 1px solid #fff;
+    box-shadow: 1px 1px 5px rgba(50,50,50,0.3);
+}
+.goods-bargain-list .li .header image{    width: 80rpx;height: 80rpx;}
+.goods-bargain-list .li .right {
+    padding: .3rem 0 0 1rem;
+}
+.bargain-user{padding:18px 12px}
+.bargain-user .left{width:110rpx;}
+.bargain-user .header {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 4rem;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 1px 1px 5px rgba(50,50,50,0.3);
+}
+.bargain-user .header image{    
+  width: 80rpx;
+    height: 80rpx;}
+
+    .bargain-user .right .sapn {
+    font-size: 22rpx;
+    color: #ff495e;
+    border: 1px solid #ff495e;
+    border-radius: 2px;
+    padding: 0 .6rem;
+    margin-left: .6rem;
+}
+.bargain-friends{position:fixed;right:15%;left:15%;top:15%;background:#fff;z-index:4999;border-radius:10rpx; box-shadow: 2px 1px 12px rgba(100,100,100,0.5);}
+.bargain-friends .f-jiantou{width:80rpx;
+height:80rpx;
+position:absolute;
+top:-25%;
+right:0;
+}
+.bargain-friends .header{padding: 10px 0;text-align: center;border-bottom:1rpx solid #eee; }
+.bargain-friends .cont{padding:15px;border-bottom:1rpx solid #eee}
+.bargain-friends .footer{margin:15px;background:#ff495e;text-align: center;padding:6px 0;border-radius:8rpx;color:#fff}
+.bargain-go .k-pic{width:180rpx;height:180rpx;}
+.bargain-go .img{padding:60rpx 0 0 0;
+width:180rpx;
+height:180rpx;
+margin:0 auto;
+}
+.bargain-go .cont{text-align:center;
+}
+/*玩法*/
+.group-detail-cont {
+    padding: 1.2rem 0;
+}
+
+
+.group-detail-cont .num-left {
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    margin-left: -60rpx;
+    z-index: 2;
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 0.5rem;
+    border-radius: 100%;
+    border: 1px dashed #e7e8ef;
+    display: block;
+    text-align: center;
+    line-height: 120rpx;
+    font-size: 1.4rem;
+}
+.bargain-detail-cont .p {
+    padding-top: 130rpx;
+}
+.bargain-detail-cont .n-list-xian, .bargain-detail-cont .n-list-xian-first, .bargain-detail-cont .n-list-xian-last {
+    top: 35%;
+}
+
+.group-detail-cont .n-list-xian-first {
+    border-top: 1px solid #e7e8ef;
+    left: 50%;
+    top: 22%;
+    z-index: 1;
+    width: 60%;
+}
+.bargain-detail-cont .em {
+    border: 1px solid #ccc;
+    color: #ccc;
+    border-radius: 2px;
+    position: absolute;
+    left: 50%;
+    margin-left: -20rpx;
+    top: -15rpx;
+    width: 40rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    text-align: center;
+    display: block;
+    background: #fff;
+}
+.bargain-detail-cont .num-left .iconfont {
+    font-size: 70rpx;
+    line-height: 120rpx;
+    text-align: center;
+    display: block;
+    color: #ccc;
+}
+.group-detail-cont .n-list-xian{border-top:1px solid #e7e8ef; top: 35%;z-index: 1;width: 100%;}
+.group-detail-cont .n-list-xian-first{border-top:1px solid #e7e8ef;left:50%; top: 35%;z-index: 1;width: 60%;}
+.group-detail-cont .n-list-xian-last{border-top:1px  solid #e7e8ef;right:50%; top: 35%;z-index: 1;width: 60%;}
+.bargain-play .more{padding-right:30rpx;margin-top:6rpx}
+
+
+
+.bargain-paly-mol .ul{padding:15rpx 12px;}
+.bargain-paly-mol .ul .li{padding:15rpx 0;font-size:26rpx;color:#666;}
+.first-img image{width:40rpx;height:55rpx;padding:10px 10px 0 0;}
+.first-img .rank{padding:10px 16px 0 10rpx;display: block}
+
+  /*倒计时*/
+.title-hrbg-team .span{background:#fff;padding:6rpx 15rpx;font-size:26rpx;z-index:10;display: inline-block;}
+.title-hrbg-team{font-size:28rpx;position:relative;z-index:1;height:60rpx;line-height:50rpx;overflow:hidden;color:#888;text-align:center;}
+.title-hrbg-team .voteText{background:#312e2e;padding:0 0.2rem;border-radius:4px;margin:0 2rpx 0 10rpx;color:#fff;font-size:28rpx}
+.title-hrbg-team hr{background:#f6f6f9;height:1px;border:0;position:absolute;left:0;right:0;top:50%;margin-top:1px;z-index:-1}
+
+.bargain-tip{position: relative; margin-top:30rpx;height:44rpx;}
+.bargain-tip .join{display: inline-block; position: absolute; left: 0; top: -6rpx; z-index: 2; width: 38%; height:44rpx; background: #ec5151; color: #fff; text-align: center; font-size: 24rpx; line-height: 44rpx;}
+.bargain-tip .join .number{font-weight: 700; font-size: 28rpx;}
+.bargain-tip .triangle{position: absolute; left: 38%; margin-left:0; top: -6rpx; z-index: 2; height: 0; width: 0; overflow: hidden; border: 22rpx solid transparent; border-left-color: #ec5151;}
+.bargain-tip .order{padding: 0 0 0 38%;height:50rpx;line-height: 50rpx;position:absolute;top:-6rpx;display: block;width:62%;}
+.bargain-tip .order marquee{height: 1.5rem; line-height:1.5rem; background: #fc3; color: #000; font-size: 1.2rem;margin-top:-.75rem;position: absolute;top:50%;width:56%;display: block;left:44%;}
+.bargain-tip .order text{color: #ec5151; padding: 0 10rpx;}
+.goods-bargain-img {
+    background: rgba(0,0,0,.6);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+    color: #fff;
+    font-size: 26rpx;
+    padding: 20rpx 0;
+}

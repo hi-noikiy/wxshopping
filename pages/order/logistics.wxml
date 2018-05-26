@@ -1,0 +1,74 @@
+<view class="container m-b5  logistics">
+
+  <view class="common-header-xian"></view>
+  <block wx:if="{{list!= undefined}}">
+    <block wx:if="{{list!=''}}">
+      <view class="header b-f cont-box">
+        <view class="li dis-box">
+          <view class="box-flex">
+            <view class="f-28 col-9">订单编号：
+              <text class="col-3">{{order_sn}}</text>
+            </view>
+          </view>
+          <view class="f-28 col-3 right p-r">
+            <contact-button type="default-light" size="27" session-from="weapp" style="opacity: 0;position:absolute;top:20rpx;left:20rpx;">
+            </contact-button>
+            <text class="iconfont icon-kefu col-m f-30"></text>联系买家
+          </view>
+        </view>
+        <view class="li dis-box">
+          <view class="box-flex">
+            <view class="f-28 col-9">承运快递：
+              <text class="col-3">{{relname}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!--内容-->
+      <view class="cont-box b-f m-top20">
+        <view class="logistics-box">
+          <view class="li cur" wx:for="{{list}}" wx:key='list'>
+            <i class="i_status type_dot"></i>
+            <view class="cont-view">
+              <view class="text"> {{item.context}}</view>
+              <view class="time">{{item.time}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </block>
+    <block wx:else>
+      <view class="ectouch-notcont">
+        <view class="img">
+          <image src="../../images/no_content.png" mode="aspectFit" />
+        </view>
+        <text class="cont">亲，您还没有物流信息！</text>
+      </view>
+    </block>
+    <!--悬浮导航-->
+    <view class="filter-menu {{nav_select?'active':''}}">
+      <view class="filter-menu-list ts-5">
+        <custom-ul>
+          <custom-li bindtap="nav" data-index="home">
+            <text class="iconfont icon-home"></text>
+          </custom-li>
+          <custom-li bindtap="nav" data-index="fenlei">
+            <text class="iconfont icon-fenlei"></text>
+          </custom-li>
+          <custom-li bindtap="nav" data-index="cart">
+            <text class="iconfont icon-cart"></text>
+          </custom-li>
+          <custom-li bindtap="nav" data-index="profile">
+            <text class="iconfont icon-profile"></text>
+          </custom-li>
+          <custom-li class="w"></custom-li>
+        </custom-ul>
+      </view>
+      <view class="filter-menu-title" bindtap='commonNav'></view>
+    </view>
+  </block>
+  <block wx:else>
+    <loading hidden="{{hidden}}">加载中…</loading>
+  </block>
+</view>

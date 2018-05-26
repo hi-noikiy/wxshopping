@@ -1,0 +1,215 @@
+<import src="../common/foot.wxml" />
+<block wx:if="{{user!= undefined}}">
+  <view class="container m-b5">
+    <view class="common-header-xian"></view>
+    <!--header-s-->
+    <view class="user-header p-r">
+      <view class="user-bg-box">
+        <open-data class="header-bg" type="userAvatarUrl"></open-data>
+      </view>
+      <!-- <navigator url="../user/profile/index" hover-class="none">
+        <view class="user-advocacy">
+          <view class="user-icon-bg">
+            <text class="iconfont icon-shezhi1"></text >
+          </view>
+        </view>
+       </navigator>    -->
+    </view>
+    <!--header-e-->
+    <!--orderList-s-->
+    <view class="user-order b-f">
+      <view class="user-order-cont dis-flex">
+        <view class="flex-box p-r">
+          <navigator url="../order/index?id=0" hover-class="none">
+            <text class="iconfont icon-form orderListIcon "></text>
+            <text class="listCont">全部订单</text>
+            <block wx:if="{{orderNum.all_num > 0}}">
+              <text class="user-tag p-a">{{orderNum.all_num}}</text>
+            </block>
+          </navigator>
+        </view>
+        <view class="flex-box p-r">
+          <navigator url="../order/index?id=1" hover-class="none">
+            <text class="iconfont icon-daifukuan orderListIcon "></text>
+            <text class="listCont">待付款</text>
+            <block wx:if="{{orderNum.no_paid_num> 0}}">
+              <text class="user-tag p-a">{{orderNum.no_paid_num}}</text>
+            </block>
+          </navigator>
+        </view>
+        <view class="p-r user-header-img" style=" flex:1.4;">
+          <!-- <navigator url="../user/profile" hover-class="none"> -->
+          <view class="box">
+            <open-data type="userAvatarUrl"></open-data>
+          </view>
+          <view class="admin onelist-hidden"> <open-data type="userNickName" lang="zh_CN"></open-data> </view>
+          <!-- </navigator> -->
+        </view>
+        <view class="flex-box p-r">
+          <navigator url="../order/index?id=2" hover-class="none">
+            <text class="iconfont icon-daishouhuo orderListIcon "></text>
+            <text class="listCont">待收货</text>
+            <block wx:if="{{orderNum.no_received_num > 0}}">
+              <text class="user-tag p-a">{{orderNum.no_received_num}}</text>
+            </block>
+          </navigator>
+        </view>
+        <view class="flex-box p-r">
+          <navigator url="../order/index?id=3" hover-class="none">
+            <text class="iconfont icon-daipingjia orderListIcon "></text>
+            <text class="listCont">待评价</text>
+            <block wx:if="{{orderNum.no_evaluation_num > 0}}">
+              <text class="user-tag p-a">{{orderNum.no_evaluation_num }}</text>
+            </block>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <!--orderList-e-->
+    <view class="page__input ">
+      <view class="dis-box user-list cont-box weui-cells b-f m-top20">
+        <view class="box-flex li t-c">
+          <navigator url="javascript:;" hover-class="none">
+            <text class="f-w f-32 col-m">{{user.funds.user_money}}</text>
+            <!-- <text class="iconfont icon-favorites f-34 col-6"></text> -->
+            <view class="f-26 col-7 m-top4">用户余额</view>
+          </navigator>
+        </view>
+        <view class="box-flex li t-c">
+          <navigator url="javascript:;" hover-class="none">
+            <text class="f-w f-32 col-m">{{user.funds.bonus_count}}</text>
+            <!-- <text class="iconfont icon-favorites f-34 col-6"></text> -->
+            <view class="f-26 col-7 m-top4">红包 </view>
+          </navigator>
+        </view>
+        <view class="box-flex li t-c">
+          <navigator url="javascript:;" hover-class="none">
+            <text class="f-w f-32 col-m">{{user.funds.pay_points}}</text>
+            <!-- <text class="iconfont icon-youhuiquan f-34 col-6"></text> -->
+            <view class="f-26 col-7 m-top4">积分</view>
+          </navigator>
+        </view>
+        <view class="box-flex li t-c">
+          <navigator url="../user/coupons" hover-class="none">
+            <text class="f-w f-32 col-m">{{user.funds.coupons_count}}</text>
+            <!-- <text class="iconfont icon-youhuiquan f-34 col-6"></text> -->
+            <view class="f-26 col-7 m-top4">优惠券</view>
+          </navigator>
+        </view>
+      </view>
+      <!--orderList-s-->
+      <view class="dis-box user-list weui-cells cont-box b-f m-top20">
+        <view class="box-flex li t-c">
+          <navigator url="../user/collect" hover-class="none">
+            <text class="f-w f-30 col-3">{{user.funds.goods_count}}</text>
+            <!-- <text class="iconfont icon-favorites f-34 col-6"></text> -->
+            <view class="f-26 col-6 m-top4">商品收藏</view>
+          </navigator>
+        </view>
+        <view class="box-flex li t-c">
+          <navigator url="../user/collect_shop" hover-class="none">
+            <text class="f-w f-30 col-3">{{user.funds.store_count}}</text>
+            <!-- <text class="iconfont icon-favorite f-34 col-6"></text> -->
+            <view class="f-26 col-6 m-top4">店铺关注</view>
+          </navigator>
+        </view>
+        <view class="box-flex li t-c">
+          <navigator url="../user/history" hover-class="none">
+            <text class="f-w f-30 col-3">{{user.funds.history}}</text>
+            <!-- <text class="iconfont icon-favorite f-34 col-6"></text> -->
+            <view class="f-26 col-6 m-top4">浏览足迹</view>
+          </navigator>
+        </view>
+      </view>
+      <!--orderList-s-->
+      <!--list-->
+      <view class="weui-cells m-top20">
+        <navigator url="../bargain/order/index" class="weui-cell weui-cell_access b-f">
+          <view class="weui-cell__hd">
+            <text class="iconfont icon-kanjia common-icon"></text>
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <p class="f-30 pl-12">我的砍价</p>
+          </view>
+          <span class="weui-cell__ft"></span>
+        </navigator>
+        <navigator url="../group/order/index" class="weui-cell weui-cell_access b-f">
+          <view class="weui-cell__hd">
+            <text class="iconfont icon-tuandui common-icon"></text>
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <p class="f-30 pl-12">我的拼团</p>
+          </view>
+          <span class="weui-cell__ft"></span>
+        </navigator>
+        <navigator url="../user/speak" class="weui-cell weui-cell_access b-f">
+          <view class="weui-cell__hd">
+            <text class="iconfont icon-fenxiang1 common-icon"></text>
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <p class="f-30 pl-12">我的代言</p>
+          </view>
+          <span class="weui-cell__ft"></span>
+        </navigator>
+      </view>
+      <view class="weui-cells m-top20">
+        <navigator url="../address/index" class="weui-cell weui-cell_access b-f">
+          <view class="weui-cell__hd">
+            <text class="iconfont icon-map common-icon"></text>
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <p class="f-30 pl-12">收货地址</p>
+          </view>
+          <span class="weui-cell__ft"></span>
+        </navigator>
+        <view class="weui-cell weui-cell_access b-f" bindtap="invoiceNav">
+          <view class="weui-cell__hd">
+            <text class="iconfont icon-templatedefault common-icon"></text>
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <p class="f-30 pl-12">增值发票</p>
+          </view>
+          <span class="weui-cell__ft"></span>
+        </view>
+      </view>
+      <view class="weui-cells  m-top20">
+        <navigator url="../user/help" class="weui-cell weui-cell_access b-f">
+          <view class="weui-cell__hd">
+            <text class="iconfont icon-help common-icon"></text>
+          </view>
+          <view class="weui-cell__bd weui-cell_primary">
+            <p class="f-30 pl-12">我的帮助</p>
+          </view>
+          <span class="weui-cell__ft"></span>
+        </navigator>
+      </view>
+    </view>
+    <!--orderList-e-->
+    <!--推荐商品列表-->
+    <view class="title-hrbg" style="margin-top:10rpx">
+      <text class="cont">“猜您喜欢”</text>
+      <view class="hr"></view>
+    </view>
+    <!--list-s-->
+    <view class="category-list">
+      <navigator class="list b-f" wx:for="{{recommend}}" wx:key="list" url="../goods/index?objectId={{item.goods_id}}" hover-class="none">
+        <view class="left">
+          <view class="img">
+            <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+          </view>
+        </view>
+        <view class="right">
+          <view class="cont">
+            <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+            <text class="price f-34 col-m">￥{{item.shop_price}}<text class="del f-22">￥{{item.market_price}}</text></text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <!--list-e-->
+  </view>
+<template is="foot" />
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>

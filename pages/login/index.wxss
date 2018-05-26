@@ -1,0 +1,9 @@
+ page{background: #fff;} 
+.login-section .header{width:160rpx;height:160rpx;border-radius:100%;overflow: hidden;margin:160rpx auto 10rpx;border:3px solid #eee }
+.login-section .user-name{text-align: center;font-size:32rpx;margin:0 60rpx 0;padding-bottom:50rpx}
+.login-section .user-name:before{content: " "; position: absolute; left: 0; bottom: 0; right: 0; height: 1px; border-bottom: 1px solid #e5e5e5; color: #e5e5e5; -webkit-transform-origin: 0 0; transform-origin: 0 0; -webkit-transform: scaleY(0.5); transform: scaleY(0.5); z-index: 1;}
+.login-section .cont{padding:40rpx 60rpx;font-size:30rpx;color:#999;text-align: center}
+.login-section  .btn{margin:30rpx 60rpx 50rpx 60rpx;border:1rpx solid #ec5151;border-radius:5px;}
+.login-section  .btn button{background:none;padding:0;font-size:32rpx;color:#ff495e;border-radius:0;border:0!important;}
+.login-section  .btn button::after{content:" ";width:0;height:0;position:absolute;top:0;left:0;border:none;-webkit-transform:scale(0);transform:scale(0);-webkit-transform-origin:0 0;transform-origin:0 0;box-sizing:border-box;border-radius:0;}
+

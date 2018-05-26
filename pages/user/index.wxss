@@ -1,0 +1,26 @@
+/****************************************用户中心*****************************************/
+.user-header .user-bg-box{width:100%; background:#fff; display:block; height:230rpx; overflow:hidden;}
+.user-header .header-bg{width:100%; height:750rpx;animation-name:shop;animation-duration:18s;animation-iteration-count:infinite; -webkit-filter: blur(5px); /* Chrome, Safari, Opera */ filter: blur(5px);} @keyframes shop{0%{transform:translateY(-80px);}50%{transform:translateY(0px);}100%{transform:translateY(-80px);}}
+/*用户头像*/
+.user-header-img .box{width:140rpx; height:140rpx; border:2px solid #fff;margin:0rpx auto 0; border-radius:100%;overflow:hidden; box-shadow: 1px 0px 5px rgba(50,50,50,.3); margin-top:-115rpx;}
+.user-header-img .box image{width:100%;height:100%;margin:0}
+.user-header-img .admin{font-size:32rpx; text-align: center; margin:4rpx 0 0 0; color:#000;}
+
+/*功能列表*/
+.user-order-cont{padding:25rpx 0;box-shadow: 1px 0px 5px rgba(50,50,50,.3);}
+.user-order-cont .orderListIcon{text-align:center; margin:0 auto; display:block; padding-top:10rpx; color:#999; font-size:34rpx;}
+.user-order-cont .moneyListNum{text-align: center;color:#f42424;font-size:38rpx;padding:0 15rpx;}
+.user-order-cont .listCont{display:block;font-size:24rpx;color:#999;text-align: center;padding-top:4rpx;}
+.user-order-cont{color:#777;font-size:30rpx;border-top:1rpx solid #eee;}
+.user-order-cont .user-tag{top:-8rpx; right:40rpx; font-size:22rpx; background:#ff495e; text-align: center; line-height:28rpx; color:#fff; border-radius:100%; min-height:30rpx; min-width:30rpx; padding:1rpx;}
+
+/*设置*/
+.user-advocacy{position:absolute;left:20rpx;top:20rpx;}
+.user-advocacy image{position:absolute;width:30rpx;height:30rpx;top:50%;margin-top:-10.5rpx;left:12rpx}
+.user-advocacy text{background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.4);border-radius: 40px;padding:6rpx;color:#fff; font-size:24rpx;}
+
+/*服务list*/
+.user-list{padding: 30rpx 15rpx}
+.user-list .li .common-icon{font-size:46rpx;}
+.user-list-service{padding: 30rpx 0 0 0}
+.user-list-service .li{padding-bottom:45rpx;}

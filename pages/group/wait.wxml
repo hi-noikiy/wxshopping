@@ -1,0 +1,176 @@
+<view class="container p-bottom">
+  <view class="common-header-xian"></view>
+  <view class="dis-box bargain-user padding-all">
+    <view class="left">
+      <view class="header">
+        <image src="{{wait.team_info.user_picture}}" />
+      </view>
+    </view>
+    <view class="box-flex right" wx:if="{{wait.team_info.status!='1'}}">
+      <view class="h4 f-30 col-3">开团成功啦！</view>
+      <view class="p f-26 col-3 m-top10">只差
+        <text class="em col-m">{{wait.team_info.surplus}}</text>位小伙伴参团，快点邀请好友参团。
+      </view>
+    </view>
+    <view class="box-flex right" wx:else>
+      <view class="h4 f-30 col-3">拼团已完成</view>
+      <view class="p f-26 col-3 m-top10">可以参与新的拼团活动啦！
+      </view>
+    </view>
+  </view>
+  <view class="group-list">
+    <view class=" b-f  item">
+      <view class=" dis-box  cont-box" bindtap="siteDetail">
+        <view class="user-left">
+          <image src="{{wait.team_info.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+        </view>
+        <view class="box-flex user-right p-r">
+          <text class="f-30 col-3 twolist-hidden">{{wait.team_info.goods_name}}</text>
+          <view class="price col-m f-32">
+            <text class="col-7 f-26" style="padding:0">{{wait.team_info.team_num}}人团</text>
+            <view>{{wait.team_info.team_price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cont-box b-f m-top20">
+    <block wx:if="{{wait.team_info.status!='1'}}">
+      <view class="title-hrbg-team">剩余
+        <view class="span color-dark" id="leftTime">
+          <block wx:if="{{countDownDay=='0'}}">
+            <text class="voteText countDownTimeText">{{countDownDay}}</text>
+            <text class="name col-s">:</text>
+          </block>
+          <text class=" voteText countDownTimeText">{{countDownHour}}</text>
+          <text class="name col-s">:</text>
+          <text class="voteText countDownTimeText">{{countDownMinute}}</text>
+          <text class="name col-s"> :</text>
+          <text class="voteText countDownTimeText">{{countDownSecond}}</text>
+        </view>结束
+        <hr/>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="title-hrbg-team">拼团完成
+        <hr/>
+      </view>
+    </block>
+    <view class="group-user-list">
+      <view wx:for="{{user_picture}}" wx:key="user_picture" class="list p-r">
+        <text class="wait-user-tag" wx:if="{{item.team_parent_id!='0'}}">团长</text>
+        <view class="img">
+          <image src="{{item.user_picture}}" mode="aspectFit" class="goodsImg" />
+        </view>
+      </view>
+      <view class="list" bindtap='userList'>
+        <view class="img">
+          <text class="iconfont icon-gengduo f-34 col-3" />
+        </view>
+      </view>
+    </view>
+    <view class="plan-box">
+      <view class="cont-title">
+        <text class="{{wait.team_info.bar>50? 'col-f':'col-3'}}">{{wait.team_info.bar}}%</text>
+        <i class="color" style="width:{{wait.team_info.bar}}%;"></i>
+      </view>
+    </view>
+  </view>
+  <!--砍价玩法-->
+  <view class="dis-box b-f goods-property-box bargain-play m-top20 " style="border-bottom:1px solid #f6f6f9" bindtap='groupPlay'>
+    <view class="box-flex col-3 f-31">拼团规则</view>
+    <view class="f-28 col-7 more">查看更多</view>
+    <view class="goods-property-jianTou">
+      <text class="iconfont icon-msnui-rightmini user-orderJtou"></text>
+    </view>
+  </view>
+  <view class=" b-f goods-property-box  common-title-box">
+    <view class="dis-box group-detail-cont bargain-detail-cont f-03 text-c col-6 p-r">
+      <view class="box-flex p-r">
+        <view class="num-left">
+          <text class="em f-24">1</text>
+
+        </view>
+        <view class="p f-24 t-c">选择商品</view>
+        <view class="n-list-xian-first p-a"></view>
+      </view>
+      <view class="box-flex p-r">
+        <view class="num-left">
+          <text class="em f-24">2</text>
+        </view>
+        <view class="p f-24 t-c">开团/参团</view>
+        <view class="n-list-xian p-a"></view>
+      </view>
+      <view class="box-flex p-r">
+        <view class="num-left">
+          <text class="em f-24">3</text>
+
+        </view>
+        <view class="p f-24 t-c">邀请好友</view>
+        <view class="n-list-xian p-a"></view>
+      </view>
+      <view class="box-flex p-r">
+        <view class="num-left">
+          <text class="em f-24">4</text>
+
+        </view>
+        <view class="p f-24 t-c">人满成团</view>
+        <view class="n-list-xian-last p-a"></view>
+      </view>
+    </view>
+  </view>
+  <!--玩法模态框-->
+  <view class="bargain-paly-mol bargain-mol ts-3 {{showViewPlay?'active':''}}">
+    <view class="header cont-box f-30 col-3">拼团规则</view>
+    <scroll-view scroll-y="true" class="max-cont">
+      <view class="ul">
+        <view class="li">1.开团：在商城内选择喜欢的商品，点击“去开团”，付款成功后即为开团成功；</view>
+        <view class="li">2.参团：进入朋友分享的页面，点击“立即参团”，付款后即为参团成功，若多人同时支付，按先支付成功的用户获得参团资格，参团订单未支付不计入参团数量，团过期未支付订单失效，但参团人信息也会显示在团里面；</view>
+        <view class="li">3.成团：在开团或参团之后,可以点击“分享出去”，在有效时间凑齐成团人数即拼团成功；</view>
+        <view class="li">4.组团失败：在有效时间内未凑齐人数，即为组团失败，此时商城会将原款分别退回；</view>
+      </view>
+    </scroll-view>
+    <view class="footer f-34 col-6 cont-box t-c" bindtap='groupPlay'>关闭</view>
+  </view>
+  <view class="dis-box b-f goods-property-box bargain-play m-top20" style="border-bottom:1px solid #f6f6f9">
+    <view class="box-flex col-3 f-31 f-w">热卖商品</view>
+  </view>
+  <!--list-s-->
+  <view class="category-list">
+    <navigator class="list b-f" wx:for="{{orders}}" wx:key="list" url="../group/goods?objectId={{item.goods_id}}" hover-class="none">
+      <view class="left">
+        <view class="img">
+          <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+        </view>
+      </view>
+      <view class="right">
+        <view class="cont">
+          <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+          <text class="price f-34 col-m">{{item.team_price}}</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <!--list-e--
+  <!-- 提交订单 -->
+  <view class="footer-fixed f-34">
+    <view class="order-number" wx:if="{{wait.team_info.status!='1'}}" id="cart" bindtap="groupMore">更多拼团</view>
+    <view class="order-number" style="width:100%" wx:if="{{wait.team_info.status=='1'}}" id="cart" bindtap="groupMore">开团或参团</view>
+    <block wx:if="{{wait.team_info.team_join!='1'}}">
+      <view class="order-bt" style="line-height:inherit;" id="checkout" bindtap="addgroupProperty">
+        <view class="f-34 m-top4">{{wait.team_info.team_price}}</view>
+        <view class="f-24">去参团</view>
+      </view>
+    </block>
+    <block wx:else>
+      <block wx:if="{{wait.team_info.status!='1'}}">
+        <view class="order-bt order-number group-wait-button" id="checkout">
+          <button open-type="share">邀请好友拼团</button>
+        </view>
+      </block>
+    </block>
+  </view>
+  <!--遮罩层-->
+  <view class="bargain-commont-bg hide{{showViewMol?'show':''}}">
+  </view>
+</view>

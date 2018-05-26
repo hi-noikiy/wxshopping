@@ -1,0 +1,8 @@
+.header{width: 100%; border-bottom: 1rpx solid #e4e4e4; background: #fff; padding:26rpx 0; position: fixed; top: 1rpx; z-index:100;}.header view{text-align: center;}
+.header .active{color: #ff495e;}
+.wrapper{margin-top: 55px;}
+.group-price{margin-top:55rpx;}
+/*按钮*/
+.grop-rank-box{width:240rpx;position:absolute;right:15rpx;bottom:15rpx;border:1px solid #ff495e;border-radius:4px;text-align: center;height:60rpx;line-height:60rpx;}
+.grop-rank-box .right{background:#ff495e;color:#fff;}
+.group-list .item .user-left .group-rank{width:50rpx; height:60rpx;position:absolute;left:0;top:0}

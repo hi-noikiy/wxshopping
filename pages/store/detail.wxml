@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="common-header-xian"></view>
+  <form bindsubmit="openLocation">
+    <!--详情头部-->
+    <view class="store-header p-r cont-box b-f b-b">
+      <view class="cont dis-box" style="position:static">
+        <view class="left">
+          <view class="store-img">
+            <image src="{{store_cont.logo_thumb}}" style='border:1rpx solid #efeff4'></image>
+          </view>
+        </view>
+        <view class="right">
+          <text class="pl-12 store_name f-30 col-3">{{store_data.detail.rz_shopName}}</text>
+          <text class="f-24 col-3 pl-12">已有<text class="col-m">{{store_num}}</text>人关注</text>
+          <view class="map">
+            <text class="iconfont icon-dizhi f-26"></text>
+            <button type="primary" formType="submit">查看位置</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="page__input m-top20">
+      <view class="weui-cells weui-cells_form b-f">
+        <view class="weui-panel__hd b-f">店铺简介</view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <label class="weui-label f-30">公司名称</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input f-30" type="text" disabled="{{true}}" value="{{store_cont.shop_name}}" name="name"></input>
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <label class="weui-label f-30">所在地区</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input f-30" type="text" disabled="{{true}}" value="{{store_cont.shop_address}}" name="address"></input>
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <label class="weui-label f-30">主营品牌</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input f-30" type="text" disabled="{{true}}" value="{{store_cont.shop_keyword}}" name="address1"></input>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="hide">
+      <input class="weui-input" type="text" disabled="{{true}}" value="{{store_cont.longitude}}" name="longitude"></input>
+      <input class="weui-input" type="text" disabled="{{true}}" value="{{store_cont.latitude}}" name="latitude"></input>
+    </view>
+  </form>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

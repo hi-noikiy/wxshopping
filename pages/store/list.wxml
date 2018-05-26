@@ -1,0 +1,78 @@
+<block wx:if="{{list!= undefined}}">
+  <view class="container">
+    <view class="common-header-xian"></view>
+    <!--详情头部-->
+    <block wx:for="{{list}}" wx:key="list">
+      <view class="store-header p-r  b-f m-top20">
+        <navigator class="box-flex" url="../store/index?objectId={{item.user_id}}" hover-class="none">
+          <view class="p-r ">
+            <view class="cont dis-box" style="position:static">
+              <view class="left">
+                <view class="store-img">
+                  <image src="{{item.sellershopinfo.logo_thumb}}" style='border:1rpx solid #efeff4'></image>
+                </view>
+              </view>
+              <view class="right">
+                <text class="pl-12 store_name f-30 col-3">{{item.rz_shopName}}</text>
+                <text class="f-24 col-3 pl-12">已有<text class="col-m">{{item.collect.num}}</text>人关注</text>
+              </view>
+            </view>
+          </view>
+          <view class="store_attention_button">
+            <text class="f-24  button-cont">查看店铺</text>
+          </view>
+        </navigator>
+      </view>
+      <!--商品列表-->
+      <block wx:if="{{item.goods!=''}}">
+        <view class="cont-box b-f dis-box index_sale">
+          <scroll-view scroll-x="true">
+            <block wx:for="{{item.goods}}" wx:key="list">
+              <view style="display: inline-block;">
+                <view class="page-column" style="padding:10rpx">
+                  <navigator class="box-flex" url="../goods/index?objectId={{item.goods_id}}" hover-class="none">
+                    <image class="sale_img" src="{{item.goods_thumb}}" mode="aspectFill" style="border:1px solid #e4e4e4" />
+                    <view class="content onelist-hidden ">
+                      <text class="f-28">{{item.goods_name}}</text>
+                    </view>
+                    <text class="price col-m f-30">{{item.shop_price}}</text>
+                  </navigator>
+                </view>
+              </view>
+            </block>
+          </scroll-view>
+        </view>
+      </block>
+    </block>
+    <view>
+    </view>
+    <view class="title-footer p-r">
+      <text class="f-24 col-9  cont">我是有底线的</text>
+      <view class="hr"></view>
+    </view>
+  </view>
+  <!--悬浮导航-->
+  <view class="filter-menu {{nav_select?'active':''}}">
+    <view class="filter-menu-list ts-5">
+      <custom-ul>
+        <custom-li bindtap="nav" data-index="home">
+          <text class="iconfont icon-home"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="fenlei">
+          <text class="iconfont icon-fenlei"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="cart">
+          <text class="iconfont icon-cart"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="profile">
+          <text class="iconfont icon-profile"></text>
+        </custom-li>
+        <custom-li class="w"></custom-li>
+      </custom-ul>
+    </view>
+    <view class="filter-menu-title" bindtap='commonNav'></view>
+  </view>
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>

@@ -1,0 +1,4 @@
+.t_product_screen {width:100%;}
+.profile-list .admin{padding-left:15px;font-size:30rpx;color:#333;}
+.section_input{border-bottom: 1px solid #f6f6f9; height:80rpx;line-height:80rpx; align-items:center;
+justify-content:space-between;padding:0}

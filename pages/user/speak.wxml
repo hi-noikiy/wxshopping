@@ -1,0 +1,41 @@
+<!--index.wxml-->
+<view class="container">
+  <!--代言header-s-->
+  <view class="speak_header">
+    <view class="speak_bg">
+      <image src="../../images/user-speak.png" />
+    </view>
+    <view class="speak_cont">
+      <view class=" dis-box cont-section">
+        <view class="left">
+          <view class="img">
+            <image src="{{userPic !=undefined ?userPic:speack_data.pic }}"></image>
+          </view>
+        </view>
+        <view class="right">
+          <text class="name">我是{{userName!=undefined?userName:speack_data.name}}</text>
+          <text class="cont">我为《{{speack_data.shop_name}}》代言</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--代言header-e-->
+  <view class="speak_cont_box">
+    <view class="img">
+      <image src="{{speack_data.image_name}}"></image>
+    </view>
+  </view>
+  <!--推广内容-s-->
+  <view class="speak-footer-cont cont-box">
+    <text class="title">推广规则</text>
+    <text class="cont">1、点击右上角分享给你的好友；</text>
+    <text class="cont">2、分享好商品给朋友是最好的帮助；</text>
+  </view>
+  <!--btn-->
+  <view class="flow-fixed-footer b-f">
+    <view class="order-number group-wait-button" style="width:100%;background:#ff495e">
+      <button open-type="share">立即分享</button>
+    </view>
+  </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

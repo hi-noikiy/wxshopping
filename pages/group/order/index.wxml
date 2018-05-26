@@ -1,0 +1,75 @@
+<view class="container p-bottom">
+  <view class="common-header-xian"></view>
+  <!--订单分类-->
+  <view class=" goods-detail-box">
+    <view class="header f-28 col-3 dis-box">
+      <view class='box-flex {{current == 0?"active":""}}' data-index="0" catchtap="bindHeaderTap">正在拼团</view>
+      <view class='box-flex {{current == 1?"active":""}}' data-index="1" bindtap="bindHeaderTap">成功团</view>
+      <view class='box-flex {{current == 2?"active":""}}' data-index="2" bindtap="bindHeaderTap">失败团</view>
+    </view>
+    <!--遮罩层-->
+    <view class="bargain-commont-bg hide{{showViewNav?'show':''}}">
+    </view>
+    <scroll-view scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower="bindDownLoad">
+
+      <view class="wrapper" wx:if="{{orders!=''}}">
+        <view class="group-list">
+          <view wx:for="{{orders}}" wx:key="{{index}}" class=" b-f m-top20 item">
+            <view class=" dis-box  cont-box" bindtap="siteDetail" data-index="{{index}}">
+              <view class="user-left">
+                <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+              </view>
+              <view class="box-flex user-right p-r">
+                <text class="f-30 col-3 twolist-hidden">{{item.goods_name}}</text>
+                <view class="price col-m f-32">
+                  <text class="col-7 f-26" style="padding:0">已有{{item.limit_num}}人团</text>
+                  <view>{{item.team_price}}</view>
+                </view>
+                <image wx:if="{{item.type=='0'&& item.pay_status=='2'}}" src="../../../images/group_0.png" mode="aspectFit" class="group-order-img" />
+                <image wx:if="{{item.type=='1'}}" src="../../../images/group_1.png" mode="aspectFit" class="group-order-img" />
+                <image wx:if="{{item.type=='2'}}" src="../../../images/group_2.png" mode="aspectFit" class="group-order-img" />
+              </view>
+            </view>
+            <view class="footer b-f" style='border-top:1rpx solid #f6f6f6'>
+              <view class="cont-box oh">
+                <view wx:if="{{item.type!='2' && item.pay_status=='2'}}" class="btn-main" bindtap='teamWait' data-index="{{index}}">拼团进度</view>
+                <!--type(0>正在；1>成功；2>失败) pay_status（0>未支付;2>已支付）-->
+                <view wx:if="{{item.type!='2' && item.pay_status!='2'}}" class="btn-main" bindtap='siteDetail' data-index="{{index}}">去支付</view>
+                <view class="btn-default " bindtap='siteDetail' data-index="{{index}}">查看订单</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class="ectouch-notcont">
+          <view class="img">
+            <image src="../../../images/no_content.png" mode="aspectFit" />
+          </view>
+          <text class="cont">亲，您还没有订单信息哦！</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--公用nav-start-->
+  <view class="commont-fixed-footer t-c dis-box ">
+    <view class="box-flex li">
+      <navigator url="../../group/index" open-type="redirect" hover-class="none">
+        <image src="../../../images/nav_group.png" mode="aspectFit"></image>
+        <view class="f-22">拼团首页</view>
+      </navigator>
+    </view>
+    <view class="box-flex li">
+      <navigator url="../../group/rank" open-type="redirect" hover-class="none">
+        <image src="../../../images/rank.png" mode="aspectFit"></image>
+        <view class="f-22">排行</view>
+      </navigator>
+    </view>
+    <view class="box-flex li active">
+      <image src="../../../images/user-active.png" mode="aspectFit"></image>
+      <view class="f-22">我的拼团</view>
+    </view>
+  </view>
+  <!--公用nav-end-->
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

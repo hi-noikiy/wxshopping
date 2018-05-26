@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="common-header-xian"></view>
+
+  <form bindsubmit="formSubmit">
+    <view class="page__input">
+      <!-- <view class="weui-cells__title">个人资料</view> -->
+      <view class="weui-cells weui-cells_form">
+        <view class="weui-cell weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <label class="weui-label f-30">手机号</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input f-30" type="tel" placeholder="请输入手机号"/>
+          </view>
+          <view class="weui-cell__ft">
+            <view class="weui-vcode-btn f-30 col-m">获取验证码(60)</view>
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__hd">
+            <label class="weui-label f-30">验证码</label>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input f-30" type="number" pattern="[0-9]*" placeholder="验证码" />
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="padding-box m-top20 ">
+      <button class="submit_btn" formType="submit">确定修改</button>
+    </view>
+  </form>
+</view>

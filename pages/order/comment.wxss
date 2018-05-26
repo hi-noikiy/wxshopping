@@ -1,0 +1,15 @@
+.comment-cont button[type="primary"]{background:#ff495e;color: #fff;}
+.comment-cont textarea{font-size:30rpx;width:100%}
+.section_input{border-bottom: 1px solid #f6f6f9; padding:0 0 24rpx 0 ; margin-bottom:24rpx; align-items:center;
+justify-content:space-between;}
+.section_input .right input{font-size: 28rpx;}
+.section_input .left{width:65px;}
+.section_input .left text{font-size:30rpx;}
+.section_input .right{flex: 4; font-size:30rpx; position:relative;}
+.section_input .right .icon-wujiaoxing{color:#777; margin-right:15rpx;}
+.add-img{border:1px solid #DFDFDF;width:160rpx; height:160rpx;margin:15px 0 0 15px}
+.add-img text{text-align: center;display: block;line-height:160rpx;font-size:80rpx;color:#ddd}
+.add-img-section .add-img{width:170rpx;}
+.add-img-section .right image{width:160rpx; height:160rpx;margin:15px 0 0 15px}
+.star-image{position: absolute; top: -22rpx; width: 42rpx; height: 42rpx; src: "../../images/normal.png";}
+.item{position: absolute; top: 0rpx; width: 42rpx; height: 42rpx;}

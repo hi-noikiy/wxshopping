@@ -1,0 +1,8 @@
+.list-header{position:fixed;top:1rpx; left:0;right:0;}
+/*搜索框*/
+.common-search-box .common-search {margin-right:15rpx}
+.common-search-box .search icon {left:0; margin-left:20rpx;}
+.common-search-box .right{width:60rpx;}
+.common-search-box .right text{height:60rpx;line-height:60rpx;}
+
+

@@ -1,0 +1,93 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/group/index",
+    "pages/group/goods",
+    "pages/group/wait",
+    "pages/group/rank",
+    "pages/group/user/list",
+    "pages/group/channel",
+    "pages/group/order/index",
+    "pages/group/order/detail",
+    "pages/bargain/index",
+    "pages/bargain/goods",
+    "pages/bargain/myorder",
+    "pages/bargain/list",
+    "pages/bargain/order/index",
+    "pages/bargain/order/detail",
+    "pages/category/index",
+    "pages/category/product_list",
+    "pages/category/screen",
+    "pages/goods/index",
+    "pages/goods/comment",
+    "pages/goods/speak",
+    "pages/flow/index",
+    "pages/flow/done",
+    "pages/flow/checkout",
+    "pages/order/index",
+    "pages/order/detail",
+    "pages/order/comment",
+    "pages/order/logistics",
+    "pages/user/index",
+    "pages/user/help",
+    "pages/user/collect",
+    "pages/user/collect_shop",
+    "pages/user/coupons",
+    "pages/user/speak",
+    "pages/user/history",
+    "pages/user/profile/index",
+    "pages/user/profile/edit_mobile",
+    "pages/address/index",
+    "pages/address/detail",
+    "pages/address/create",
+    "pages/invoice/create",
+    "pages/invoice/detail",
+    "pages/invoice/update",
+    "pages/store/index",
+    "pages/store/list",
+    "pages/store/detail",
+    "pages/login/index",
+    "pages/search/index"
+  ],
+  "window": {
+    "backgroundColor": "#F7F7F7",
+    "backgroundTextStyle": "dark",
+    "borderStyle": "black",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#ff495e",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/category/index",
+        "iconPath": "images/cate.png",
+        "selectedIconPath": "images/cate-active.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/flow/index",
+        "iconPath": "images/flow.png",
+        "selectedIconPath": "images/flow-active.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-active.png",
+        "text": "我的"
+      }
+    ],
+    "position": "bottom"
+  },
+  "debug": false
+}

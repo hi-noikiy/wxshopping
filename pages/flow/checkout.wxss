@@ -1,0 +1,45 @@
+.no-flow image{margin-top: 6rpx;}
+.flow-header-left{padding-left:90rpx;}
+.goods-coupon-cont label .coupons-radio-left{padding-left:12px;margin-top:36rpx;}
+.coupons_list{border-bottom:1px solid #efeff4}
+
+/*发票*/
+.weui-cells{position: relative; margin-top: 1.17647059em; background-color: #FFFFFF; line-height: 1.41176471; font-size: 17px;}
+.weui-cells:before{content: " "; position: absolute; left: 0; top: 0; right: 0; height: 1px; color: #D9D9D9;}
+.weui-cells:after{content: " "; position: absolute; left: 0; bottom: 0; right: 0; height: 1px; color: #D9D9D9;}
+.weui-cells__title{margin-top: .77em; margin-bottom: .3em; padding-left: 15px; padding-right: 15px; color: #999999; font-size: 14px;}
+.weui-cells_after-title{margin-top: 0;}
+.weui-cells__tips{margin-top: .3em; color: #999999; padding-left: 15px; padding-right: 15px; font-size: 14px;}
+.weui-cell{font-size:26rpx; padding: 6px 15px; position: relative; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; align-items: center;color:#333}
+
+
+.checkout_list{padding: 10px 15px 2px 15px; background: #fff; border-bottom: 1rpx solid #eee;}
+.checkout_list .flow-shopList{padding: 5rpx 0 10rpx; border-bottom: 1rpx solid #eee;}
+.checkout_list .flow-shopList:last-child{border-bottom: 0;}
+
+.flow-distribution-right .icon-xiangyoujiantou{font-size: 26rpx; position: absolute; right: 15px; top: 50%; margin-top:-16rpx; color: #999;}
+.flow-header-right .icon-xiangyoujiantou{position: absolute; right: 15px; top: 50%; margin-top: -13rpx; font-size: 32rpx; color: #999;}
+
+/*发票弹框*/
+.t_product{position: fixed; top: 0; bottom: 0; right: -1000px; z-index: 100; background-color: #efeff4; width: 100%;}
+.t_product .invoice_list .invoice_btn{overflow: hidden; padding: 0 15px;}
+.t_product .invoice_list .invoice_btn .list{float: left; width: 180rpx; height: 75rpx;}
+.t_product .invoice_list .invoice_btn .list text{padding: 6rpx 20rpx; font-size: 28rpx; color: #999; border-radius: 4px; border: 1rpx solid #eee; width:120rpx; display: block; text-align: center;}
+.t_product .invoice_list .invoice_btn .list text.active{color: #ff495e; border: 1rpx solid #ff495e;}
+.t_product .invoice_list .cont{font-size: 24rpx; color: #777; padding: 0 15px; display: block;}
+/**/
+.t_product .invoice_list .cont{font-size: 24rpx; color: #777; padding:5rpx 15px 20rpx 15px; display: block; background:#fff;}
+
+.t_product .header{padding: 15px 15px 26rpx 15px; background: #fff; font-size: 30rpx;color:#333}
+#top-nav-bar-true text{border: 1rpx #ff495e solid; color:#ff495e;}
+.invoice-box .list text{padding:10rpx 18rpx; font-size:28rpx; border:1rpx solid #bbb; border-radius:4px; color:#777; width:120rpx; display: block; text-align: center;}
+.invoice-box{overflow:hidden;height:65rpx;background:#fff;padding:0 15px 10rpx 15px;}
+.invoice-box .list{width:180rpx; float:left;}
+.invoice-box .list.active text{background:#eee;border:1rpx solid #ddd;color:#aaa}
+.invoice_list{border-top:1rpx solid #eee}
+.header-user{padding: 5px 15px 15rpx 15px; background: #fff; font-size: 32rpx;}
+.user-invoice .user{padding:0 15px 0 15px; background:#fff;}
+.invoice-box-user{padding:18rpx 15px;}
+/*优惠券*/
+.cont-text{float:right;font-size:30rpx;color:#555;margin-top:4rpx;}
+.goods-coupon-cont coupons-li {padding:0 15rpx 0 15rpx;}

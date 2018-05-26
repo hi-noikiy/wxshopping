@@ -1,0 +1,179 @@
+<view class="container m-b5">
+  <view class="common-header-xian"></view>
+  <!--订单分类-->
+  <view class=" goods-detail-box">
+    <view class="header f-28 col-3 dis-box">
+      <view class='li box-flex {{current == 0?"active":""}}' data-index="0" catchtap="bindHeaderTap">全部订单</view>
+      <view class='li box-flex {{current == 1?"active":""}}' data-index="1" bindtap="bindHeaderTap">待付款</view>
+      <view class='li box-flex {{current == 2?"active":""}}' data-index="2" bindtap="bindHeaderTap">待收货</view>
+      <view class='li box-flex {{current == 3?"active":""}}' data-index="3" bindtap="bindHeaderTap">待评价</view>
+      <view class="commont-nav-more" bindtap='navMore'>
+        <text class="iconfont icon-xiangyoujiantou user-orderJtou-1 {{showViewNav?'':'user-orderJtou-2'}}"></text>
+      </view>
+    </view>
+    <!--更多nav-->
+    <view class="comment-more-nav dis-box {{showViewNav?'active':''}}">
+      <view class="box-flex">
+        <view class="btn" bindtap='bargainNav'>
+          <text class="iconfont icon-daojianfu"></text>
+          <text class="f-26">我的砍价</text>
+        </view>
+      </view>
+      <view class="box-flex">
+        <view class="btn" bindtap='groupNav'>
+          <text class="iconfont icon-shehuituanti"></text>
+          <text class="f-26">我的拼购</text>
+        </view>
+      </view>
+      <view class="box-flex"></view>
+    </view>
+    <!--遮罩层-->
+    <view class="bargain-commont-bg hide{{showViewNav?'show':''}}">
+    </view>
+
+    <view class="wrapper">
+      <view wx:if="{{orders!='' || commentList!=''}}">
+        <view wx:if="{{orders!=''}}">
+          <scroll-view class="list" scroll-y="true" style="height:{{scrollHeight}}px;" scroll-top="{{scrollTop}}">
+            <!-- bindscrolltolower="bindDownLoad" bindscroll="scroll"-->
+            <block wx:for="{{orders}}" wx:key="orders">
+              <view class="m-top20">
+                <view class="order-box b-f">
+                  <view class="order-header dis-flex">
+                    <view class="flex-box">
+                      <text class="title">{{item.shop_name}}</text>
+                    </view>
+                    <view class="flex-box">
+                      <text class="cont">{{item.pay_status}} {{item.shipping_status}} {{item.order_status}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class="order-box b-f">
+                  <view class="order-cont">
+                    <view class="order-num">
+                      <text>订单号：</text>{{item.order_sn}}
+                      <text class="f-22  {{item.extension_code!=''?'bar-btn':''}}">{{item.extension_code!=''?'砍价订单':''}}</text>
+                    </view>
+                    <view class="time">
+                      <text>{{item.add_time}}</text>
+                    </view>
+                  </view>
+                </view>
+                <view class="order-box order-img_list">
+                  <view class="order-shop dis-flex">
+                    <view class="order-list-box dis-flex" bindtap="siteDetail" data-index="{{index}}">
+                      <view class="left">
+                        <view class="dis-flex">
+                          <block wx:for="{{item.goods}}" wx:key="goods">
+                            <view class="order-shop-left">
+                              <image src="{{item.goods_thumb}}"></image>
+                            </view>
+                            <!-- <view class="order-right-name twolist-hidden">{{item.goods_name}}</view> -->
+                          </block>
+                        </view>
+                      </view>
+                      <view class="right p-r">
+                        <text class="goods-number">共{{item.total_number}}件</text>
+                        <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="order-box b-f">
+                  <view class="order-btn dis-flex">
+                    <view class="order-left">
+                      <view class="text">合计：
+                        <text class="col-m">{{item.total_amount_formated}}</text>
+                      </view>
+                    </view>
+                    <view class="order-right">
+                      <view class="dis-flex">
+                        <view class="flex-box" wx:if="{{item.shipping_status == '未发货' &&item.pay_status=='已付款'}}" bindtap="siteDetail" data-index="{{index}}">
+                          <view class="btn-default">查看详情</view>
+                        </view>
+                        <navigator class="flex-box" url="../order/logistics?objectId={{item.invoice_no}}&relname={{item.shipping_relname}}&name={{item.shipping_name}}" hover-class="none" wx:if="{{item.shipping_status == '已发货'}}">
+                          <view class="btn-default">查看物流</view>
+                        </navigator>
+                        <view class="flex-box" wx:if="{{item.pay_status == '未付款'}}">
+                          <view class="btn-default" bindtap='cancel_order' data-id="{{item.order_id}}">取消</view>
+                        </view>
+                        <view class="" wx:if="{{item.pay_status == '未付款'}}">
+                          <form bindsubmit="pay_order" report-submit="true" data-id="{{item.order_id}}">
+                            <view class="btn-main form_id">
+                              <button form-type="submit"> 去付款 </button>
+                            </view>
+                          </form>
+                        </view>
+                        <view class="flex-box" wx:if="{{item.shipping_status == '已发货'}}">
+                          <view class="btn-main" bindtap='confirm_order' data-id="{{item.order_id}}">确认收货</view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </block>
+          </scroll-view>
+        </view>
+        <!--评论-->
+        <view wx:if="{{commentList!=''}}">
+          <view class="category-list arrange" style="margin-top:112rpx">
+            <navigator class="list b-f" wx:for="{{commentList}}" wx:key="list" url="../goods/index?objectId={{item.id}}" hover-class="none">
+              <view class="left">
+                <view class="img">
+                  <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+                </view>
+              </view>
+              <view class="right">
+                <view class="cont">
+                  <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+                  <view class="price f-34 col-m m-top10">{{item.shop_price}}</view>
+                  <view class="goods_number">
+                    <view class="dis-box  f-24 col-7 m-top10">
+                      <view class="box-flex "></view>
+                      <view class=" t-r">
+                        <view class="btn-main" bindtap='commentBtn' data-index="{{index}}" data-id="{{item.oid}}">去评价</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class="ectouch-notcont">
+          <view class="img">
+            <image src="../../images/no_content.png" mode="aspectFit" />
+          </view>
+          <text class="cont">亲，您还没有订单信息哦！</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{bottomloading!=''}}">
+    <view class="f-28 col-3 viewshow  {{bottomloading}} ">
+      <view class="dis-box">
+        <view class="loadEffect">
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+        </view>
+        <view class="cont f-28 col-7">加载更多...</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="title-footer p-r" wx:if="{{isListData == false && viewBox == true}}">
+      <text class="f-24 col-9  cont">没有更多了</text>
+      <view class="hr"></view>
+    </view>
+  </block>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

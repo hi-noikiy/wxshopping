@@ -1,0 +1,51 @@
+<block wx:if="{{addressList!= undefined}}">
+  <view class="container m-b6 p-bottom">
+    <view class="common-header-xian"></view>
+    <!--地址-s-->
+    <custom-ul class="addres-list" wx:if="{{addressList !=''}}">
+      <custom-li wx:for="{{addressList}}" wx:for-index="index" wx:for-item="vo" wx:key="addressList">
+        <view class="address-header b-f dis-box m-top18">
+          <view class="flow-header-left pl-12">
+            <view class="flow-checkout-admin">{{vo.consignee}}
+              <text>{{vo.mobile}}</text>
+            </view>
+            <view class="flow-checkout-address">{{vo.address}}</view>
+          </view>
+        </view>
+        <view class="address-list dis-flex b-f">
+          <view class="list address-left">
+            <radio-group class="radio-group" bindchange="setDefault">
+              <label class="radio">
+                <radio checked="{{vo.default}}" color='#ff495e' value="{{vo.id}}" />
+                <text class="cont" wx:if="{{vo.default}}">默认</text>
+                <text class="cont" wx:else="{{vo.default}}">选择</text>
+              </label>
+            </radio-group>
+          </view>
+          <view class="list address-right">
+            <text class="iconfont icon-buoumaotubiao30"></text>
+            <text class="title" data-address="{{index}}" bindtap="editAddress">编辑</text>
+            <text class="iconfont icon-lajixiang"></text>
+            <text class="title" data-address="{{vo.id}}" bindtap="removeAddress">删除</text>
+          </view>
+        </view>
+      </custom-li>
+    </custom-ul>
+    <view wx:else>
+      <view class="ectouch-notcont">
+        <view class="img">
+          <image src="../../images/no_content.png" mode="aspectFit" />
+        </view>
+        <text class="cont">亲，您还没有收货列表</text>
+      </view>
+    </view>
+    <!--地址-e-->
+    <!--btn-->
+    <view class="footer-fixed f-34">
+      <view class="order-bt" style="width:100%" bindtap="createAddress">添加新地址</view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>

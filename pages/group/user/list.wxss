@@ -1,0 +1,15 @@
+.bargain-user{padding:8px 12px;border-bottom:1rpx solid #efeff4}
+.bargain-user .left{width:110rpx;}
+.bargain-user .header {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 4rem;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 1px 1px 5px rgba(50,50,50,0.3);
+}
+.bargain-user .header image{    
+  width: 80rpx;
+  height: 80rpx;
+}
+.wait-user-tag{background:#ec5151;font-size:22rpx;color:#fff;padding:2rpx 14rpx;position:absolute;top:0;right:0;border-radius:50rpx;}

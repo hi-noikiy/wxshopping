@@ -1,0 +1,8 @@
+.header{width: 100%; border-bottom: 1rpx solid #e4e4e4; background: #fff; padding:26rpx 0; position: fixed; top: 1rpx; z-index:100;}
+.header view{text-align: center;}
+.header .active{color: #ff495e;}
+.wrapper{margin-top: 54px;}
+.btn-default{border-radius: 4px; border: 1rpx solid #ccc; padding: 6rpx 20rpx; font-size: 28rpx; color: #555; float: right;}
+.btn-main{border-radius: 4px; border: 1rpx solid #ff495e; padding: 6rpx 20rpx; font-size: 28rpx; color: #ff495e; margin-left: 10rpx; float: right;}
+
+.group-order-img{width:120rpx;height:120rpx; position:absolute;top:80rpx;right:0}

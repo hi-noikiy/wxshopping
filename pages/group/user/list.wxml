@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="common-header-xian"></view>
+    <view wx:for="{{listsData}}" wx:key="listsData" class="dis-box bargain-user  b-f">
+    <view class="left p-r">
+          <text class="wait-user-tag" wx:if="{{item.team_parent_id!='0'}}">团长</text>
+      <view class="header">
+        <image src="{{item.user_picture}}" />
+      </view>
+    </view>
+    <view class="box-flex right">
+      <view class="h4 f-30 col-3">{{item.user_name}}</view>
+      <view class="p f-26 col-3 m-top10">
+        <text class="em col-7">{{item.add_time}}</text>
+      </view>
+    </view>
+  </view>
+</view>

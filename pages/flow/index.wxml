@@ -1,0 +1,96 @@
+<!--flow/index-->
+<import src="../common/foot.wxml" />
+<block wx:if="{{cartData!= undefined}}" >
+  <view class="container {{shopLists!=''?'p-bottom':''}}" style="position:absolute;left:0;top:128rpx">
+    <view class="common-header-xian"></view>
+    <custom-ul class="flow-list">
+      <block wx:if="{{shopLists !=''}}">
+        <custom-li wx:for="{{shopLists}}" wx:key="shopLists" wx:for-index="index">
+          <view class="header">
+            <text class="iconfont icon-dianpu2 "></text>
+            <text class="shop_name">{{item[0].shop_name}}</text>
+          </view>
+          <view wx:for="{{item}}" wx:key="id">
+            <view class="dish-item" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}">
+              <view class="dish-item-wrp">
+                <navigator url="../goods/index?objectId={{item.goods_id}}" hover-class="none">
+                  <view class="dish-item-pic" bindtap="flowDetail">
+                    <image class="image" src="{{item.goods_thumb}}" />
+                  </view>
+                </navigator>
+                <view class="dish-item-info">
+                  <view>
+                    <text class=" {{item.goods_attr != '' ? 'onelist-hidden ' : 'twolist-hidden '}} f-30 col-3" bindtap="flowDetail">{{item.goods_name}}</text>
+                  </view>
+                  <view class="goods-attr">
+                    <text class=" col-7 f-24">{{item.goods_attr}}</text>
+                  </view>
+                  <view class="wx-goods_price">
+                    <text class="dish-item-money">{{item.goods_price_formated}} </text>
+                  </view>
+                  <view class="selectNumber">
+                    <button type="default" data-id="{{item.rec_id}}" data-cid="{{item.goods_id}}" class="default  {{item.goods_number >1  ? '' : ' default-active'}}" bindtap="minusCount">-</button>
+                    <input type="number" rreadOnly="true" value="{{item.goods_number}}" bindinput="import" />
+                    <button type="default" data-id="{{item.rec_id}}" data-cid="{{item.goods_id}}" class="default" bindtap="addCount">+</button>
+                  </view>
+                  <!---删除-->
+                  <view class="flow-dete" catchtap="del" data-index="{{index}}" data-id="{{item.rec_id}}">
+                    <text class="iconfont icon-lajixiang"></text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </custom-li>
+      </block>
+      <block wx:else>
+        <view class="ectouch-notcont flow-no-cart">
+          <view class="gwc-bg">
+            <text class="iconfont icon-cart"></text >
+					</view>
+          <text class="cont m-top20">亲，购物车还没有商品哦</text>
+            <view class="flow-btn-min" bindtap="flowcartBtn">去购物</view>
+          </view>
+      </block>
+    </custom-ul>
+    <view wx:if="{{shopLists !=''}}">
+      <view class="cart-tab-wrp">
+        <view class="cart-item-total cart-tab-item">
+          <text class="cart-item-total-price h4">合计：{{total.goods_price_formated}}</text>
+        </view>
+        <view class="cart-tab-item">
+          <view class="cart-tab-item-btn h4 button-common">
+            <button bindtap="flowCheckoutBtn" style="color:#fff">结算({{total.goods_number}})</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--推荐商品列表-->
+    <view class="title-hrbg" style="margin-top:20rpx">
+      <text class="cont">可能你想要</text>
+      <view class="hr"></view>
+    </view>
+    <!--list-s-->
+    <view class="category-list">
+      <navigator class="list b-f" wx:for="{{indexGoods}}" wx:key="list" url="../goods/index?objectId={{item.goods_id}}" hover-class="none">
+        <view class="left">
+          <view class="img">
+            <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+          </view>
+        </view>
+        <view class="right">
+          <view class="cont">
+            <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+            <text class="price f-34 col-m">{{item.shop_price_formated}}<text class="del f-22">{{item.market_price_formated}}</text></text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <!--list-e-->
+    <template is="foot" />
+    </view>
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>
+<header background-color="#FFF" color="#000" fixed align="center">购物车</header>

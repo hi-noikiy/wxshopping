@@ -1,0 +1,2 @@
+.t_product_screen {width:100%;position:fixed;top:0;right:-1000px;bottom:0;background: #F7F7F7;}
+

@@ -1,0 +1,25 @@
+page {background: #fff;}
+.search-max-box{background: #efeff4;}
+.search-input-box{height: 60rpx; overflow:hidden;}
+.search-input{width: 80%; background: #fff; border-radius: 5px 0 0 5px; padding-left: 10rpx; box-sizing: border-box; overflow:hidden;}
+.search-input input{font-size: 28rpx; height: 60rpx; line-height: 60rpx; padding-left:10px;}
+.search-box .left{width: 28px;}
+.search-box .left icon{padding: 15rpx;}
+.serch-button{width: 20%; box-sizing: border-box;}
+.serch-button button{line-height: 60rpx; height: 60rpx; font-size: 28rpx; border-radius: 0 5px 5px 0;}
+
+.title-box{font-size: 10pt; padding: 50rpx 0 0 0; color: #777;}
+.title-box .icon-lajixiang{float: right;}
+.seconds-kill-li{padding: 10rpx; box-sizing: border-box;}
+.sale-button-box{padding: 10px 0;}
+.sale-button, .recent-button{background: #fff; padding: 10rpx; border-radius: 50px; justify-content: center; text-align: center; font-size: 26rpx; border: 1px solid #eee; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; height: 30rpx; line-height: 30rpx;}
+.serch-button button{background: #ff495e;}
+.search-cont{padding: 0 15px; background: #fff;}
+.sale-button-box{overflow: hidden;}
+.seconds-kill-li{width: 33.3%; float: left;}
+.price-box{overflow: hidden}
+.price-box .seconds-kill-li .price-button{background: #fff; padding: 10rpx; border-radius: 50px; justify-content: center; text-align: center; font-size: 26rpx; border: 1px solid #eee; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; height: 30rpx; line-height: 30rpx;}
+.price-box .seconds-kill-li .active .price-button{border:1rpx solid #ff495e;color:#ff495e}
+.override_price{margin-top:10rpx;padding:0 10rpx;}
+.override_price .right{padding-left:20rpx; }
+.search-footer{position:fixed;width:100%;bottom:10rpx;}

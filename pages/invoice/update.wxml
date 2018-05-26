@@ -1,0 +1,134 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="common-header-xian"></view>
+  <form bindsubmit="formSubmit">
+    <!--list-->
+    <view class="page__input">
+      <view class="weui-cells">
+        <view class="weui-cells__title">增票资质信息</view>
+        <view class="weui-cells weui-cells_form b-f">
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">单位名称</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" confirm-type="" name="company_name" type="text" placeholder="请输入单位名称" value="{{company_name}}" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">识别码</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" type="number" confirm-type="" name="tax_id" type="number" placeholder="请输入纳税人识别码" value="{{tax_id}}" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">注册地址</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" name="company_address" type="text" placeholder="请输入注册地址" value="{{company_address}}" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">注册电话</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" name="company_telephone" type="number" placeholder="请输入注册电话" value="{{company_telephone}}" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">开户银行</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" confirm-type="" name="bank_of_deposit" type="text" maxlength="11" placeholder="请输入开户银行" value="{{bank_of_deposit}}" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">银行账户</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" confirm-type="" name="bank_account" type="number" placeholder="请输入银行账户" value="{{bank_account}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="weui-cells">
+        <view class="weui-cells__title">票据收件信息</view>
+        <view class="weui-cells weui-cells_form b-f">
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">姓名</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" confirm-type="" name="consignee_name" type="text" placeholder="请输入收票人姓名" value="{{consignee_name}}" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">手机号</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" name="consignee_mobile_phone" maxlength="11" type="number" placeholder="请输入收票人手机号" value="{{consignee_mobile_phone}}" />
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">所在地区</label>
+            </view>
+            <view class="weui-cell__bd">
+              <text class="infoText f-30" bindtap="translate">{{province}} {{city}} {{county}}</text>
+            </view>
+          </view>
+          <view class="weui-cell">
+            <view class="weui-cell__hd">
+              <label class="weui-label f-30">详细地址</label>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input f-30" name="consignee_address" type="text" placeholder="请输入收票人地址" value="{{consignee_address}}" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="padding-box m-top20 ">
+      <button class="submit_btn" formType="submit">提 交</button>
+    </view>
+    <!--省市区弹框-->
+    <view class="animation-element-wrapper" animation="{{animation}}" style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hiddenFloatView" data-id="444">
+      <view class="animation-element" catchtap="nono">
+        <text class="address-text left-bt" catchtap="hiddenFloatView" data-id="555">取消</text>
+        <text class="address-text right-bt" catchtap="checkFloatView" data-id="666">确定</text>
+        <view class="line"></view>
+
+        <picker-view indicator-style="height: 50rpx;" value="{{value}}" bindchange="bindChange" catchtap="nono">
+          <!--省-->
+          <picker-view-column>
+            <view wx:for="{{provinces}}" wx:for-item="sheng" wx:key="">
+              {{sheng.region_name}}
+            </view>
+          </picker-view-column>
+          <!--地级市-->
+          <picker-view-column>
+            <view wx:for="{{citys}}" wx:key="">
+              {{item.region_name}}
+            </view>
+          </picker-view-column>
+          <!--区县-->
+          <picker-view-column>
+            <view wx:for="{{countys}}" wx:key="">
+              {{item.region_name}}
+            </view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+    <!--遮罩层-->
+    <view class="bargain-commont-bg hide{{showViewMol?'show':''}}">
+    </view>
+  </form>
+</view>

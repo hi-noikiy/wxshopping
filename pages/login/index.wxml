@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="common-header-xian"></view>
+  <view class="login-section">
+    <view class="header">
+      <open-data class="header-bg" type="userAvatarUrl"></open-data>
+    </view>
+    <view class="user-name p-r">
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+    </view>
+    <view class="cont">
+      亲，您还没有授权，未授权将会影响小程序正常体验，快去授权信息吧！
+    </view>
+    <view class="btn t-c">
+      <button class='login' lang="zh_CN " bindgetuserinfo="getUserInfo" open-type='getUserInfo' wx:if="true">去授权用户信息</button>
+    </view>
+  </view>
+  <!--获取用户信息-->
+  <view class="login-select" hidden="{{loginView}}">
+    <view class="cont">
+      <view class="title t-c f-38">温馨提示</view>
+      <text class="p db t-c f-32 col-8 p-t10">未授权将会影响小程序正常体验，请允许授权！</text>
+    </view>
+    <view class="btn t-c" bindtap='userInfoBtn'>
+      <button class='login' lang="zh_CN " bindgetuserinfo="getUserInfo" open-type='getUserInfo' wx:if="true">确定</button>
+    </view>
+  </view>
+  <view class="bargain-commont-bg" hidden="{{loginView}}">
+  </view>
+  <loading hidden="{{hidden}}">授权中…</loading>
+</view>

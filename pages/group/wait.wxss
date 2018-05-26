@@ -1,0 +1,38 @@
+.bargain-user{padding:18px 12px}
+.bargain-user .left{width:110rpx;}
+.bargain-user .header{width: 80rpx; height: 80rpx; border-radius: 4rem; overflow: hidden; border: 3px solid #fff; box-shadow: 1px 1px 5px rgba(50,50,50,0.3);}
+.bargain-user .header image{width: 80rpx; height: 80rpx;}
+.bargain-user .right .sapn{font-size: 22rpx; color: #ec5151; border: 1px solid #ec5151; border-radius: 2px; padding: 0 .6rem; margin-left: .6rem;}
+
+/*玩法*/
+.group-detail-cont{padding: 10rpx 0;}
+.group-detail-cont .num-left{position: absolute; left: 50%; z-index: 2;}
+.bargain-detail-cont .p{padding-top: 60rpx;}
+.bargain-detail-cont .n-list-xian, .bargain-detail-cont .n-list-xian-first, .bargain-detail-cont .n-list-xian-last{top: 35%;}
+.group-detail-cont .n-list-xian-first{border-top: 1px solid #e7e8ef; left: 50%; top: 22%; z-index: 1; width: 60%;}
+.bargain-detail-cont .em{border: 1rpx dashed #ccc; color: #ccc; border-radius: 20rpx; position: absolute; left: 50%; margin-left: -20rpx; top: 15rpx; width: 30rpx; height: 30rpx; line-height: 30rpx; text-align: center; display: block; background: #fff;}
+
+.group-detail-cont .n-list-xian{border-top:1px solid #e7e8ef; top: 35%;z-index: 1;width: 100%;}
+.group-detail-cont .n-list-xian-first{border-top:1px solid #e7e8ef;left:50%; top: 35%;z-index: 1;width: 60%;}
+.group-detail-cont .n-list-xian-last{border-top:1px  solid #e7e8ef;right:50%; top: 35%;z-index: 1;width: 60%;}
+.bargain-play .more{padding-right:30rpx;}
+.bargain-paly-mol .ul{padding:15rpx 12px;}
+.bargain-paly-mol .ul .li{padding:15rpx;font-size:26rpx;color:#666;}
+
+/*倒计时*/
+.title-hrbg-team .span{background:#fff;padding:6rpx 15rpx;font-size:26rpx;z-index:10;display: inline-block;}
+.title-hrbg-team{font-size:28rpx;position:relative;z-index:1;height:100rpx;line-height:100rpx;overflow:hidden;color:#888;text-align:center;margin-bottom:20rpx;}
+.title-hrbg-team .voteText{background:#312e2e;padding:0 0.2rem;border-radius:4px;margin:0 .1rem;color:#fff;font-size:28rpx}
+.title-hrbg-team hr{background:#f6f6f9;height:1px;border:0;position:absolute;left:0;right:0;top:50%;margin-top:1px;z-index:-1}
+/*参团列表*/
+.group-user-list{overflow:hidden}
+.group-user-list .list{width:16%;float:left}
+.group-user-list .list .img{width:90rpx;height:90rpx;border-radius: 100%;overflow:hidden;border:1rpx solid #ccc;margin:0 auto}
+.group-user-list .list .img image{width:90rpx;height:90rpx}
+.group-user-list .list .img .icon-gengduo{text-align: center;display: block;line-height:90rpx;}
+/*jindutiao*/
+.plan-box .cont-title{position:relative;margin-top:30rpx; height:26rpx;border-radius:0.3rem;background-color:#f7dfe3;width:100%;border:1rpx solid #ec5151}
+.plan-box .cont-title text{position:absolute;top:50%;left:50%;font-size:22rpx;margin-left:-3rpx;bottom:0;margin-top:-16rpx;}
+.plan-box .color{display:block;height:100%;border-radius:0.2rem;background:#ec5151}
+.group-wait-button button{background:none;padding:0;font-size:34rpx;color:#fff;line-height:inherit;}
+.wait-user-tag{background:#ec5151;font-size:22rpx;color:#fff;padding:2rpx 14rpx;position:absolute;top:0;right:0;border-radius:50rpx;}

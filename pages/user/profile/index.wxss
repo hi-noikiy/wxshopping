@@ -1,0 +1,9 @@
+.section_input .left text{font-size:30rpx;}
+.section_input .right{flex: 4; font-size:30rpx;}
+
+.section{clear: both; width:90%; margin: 2rem auto;}
+.input-text{border: 1px solid #ddd;}
+.button{border: 1px solid #1aad19; border-radius: 2px;}
+.picker{padding: 13px; background-color: #FFFFFF;}
+.iphone-box{padding:12rpx 26rpx;}
+

@@ -1,0 +1,40 @@
+<view class="container m-b5">
+  <view class="goods_comment_box b-f">
+    <block wx:for="{{goodsComment}}" wx:key="goodsComment">
+      <view class="cont-box goods-comment-box b-t b-f b-b m-top20">
+        <text class="admin">{{item.user_name}}</text>
+        <view class="com_xing">
+          <text class="iconfont icon-shoucang1 {{item.comment_rank > 0 ? 'active ' : ''}}"></text>
+          <text class="iconfont icon-shoucang1 {{item.comment_rank > 1 ? 'active ' : ''}}"></text>
+          <text class="iconfont icon-shoucang1 {{item.comment_rank > 2 ? 'active ' : ''}}"></text>
+          <text class="iconfont icon-shoucang1 {{item.comment_rank > 3 ? 'active ' : ''}}"></text>
+          <text class="iconfont icon-shoucang1 {{item.comment_rank > 4 ? 'active ' : ''}}"></text>
+        </view>
+        <view class="goods-comment-cont m-top20">{{item.content}}</view>
+        <view class="f-22 col-9 m-top10">{{item.add_time}}</view>
+      </view>
+    </block>
+  </view>
+  <!--悬浮导航-->
+  <view class="filter-menu {{nav_select?'active':''}}">
+    <view class="filter-menu-list ts-5">
+      <custom-ul>
+        <custom-li bindtap="nav" data-index="home">
+          <text class="iconfont icon-home"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="fenlei">
+          <text class="iconfont icon-fenlei"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="cart">
+          <text class="iconfont icon-cart"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="profile">
+          <text class="iconfont icon-profile"></text>
+        </custom-li>
+        <custom-li class="w"></custom-li>
+      </custom-ul>
+    </view>
+    <view class="filter-menu-title" bindtap='commonNav'></view>
+  </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

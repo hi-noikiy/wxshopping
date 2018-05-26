@@ -1,0 +1,126 @@
+<view class="container cont-bot">
+  <!--首页banner-->
+  <view class="index-banner p-r">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper-box ">
+      <block wx:for="{{banner}}" wx:key="banner">
+        <navigator url="{{item.link}}" hover-class="navigator-hover" open-type="redirect">
+          <swiper-item>
+            <image src="{{item.pic}}" class="slide-image" />
+          </swiper-item>
+        </navigator>
+      </block>
+    </swiper>
+    <!--header-bg-->
+    <!--搜索框-->
+  </view>
+  <!--活动-->
+  <!--推荐商品列表-->
+  <!--list-s-->
+  <block wx:if="{{index!= undefined}}">
+    <view class="category-list">
+      <view class="list b-f" wx:for="{{index}}" wx:key="list" bindtap="siteDetail" data-index="{{index}}">
+        <view class="left">
+          <view class="img p-r">
+            <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+            <view class="bargain-num">{{item.total_num}}人参与</view>
+          </view>
+        </view>
+        <view class="right">
+          <view class="cont">
+            <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+            <view class="price p-r" style="padding-top:0">
+              <text class="del f-22" style="padding:0">原价{{item.shop_price}}</text>
+              <view class="f-22 col-9">底价
+                <text class="f-34 col-m">{{item.target_price}}</text>
+              </view>
+              <view class="bargain-btn">去参与</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="page__input">
+      <view class="weui-panel__ft b-f">
+        <navigator url="../bargain/list" open-type="redirect" hover-class="none" class="weui-cell weui-cell_access weui-cell_link">
+          <view class="weui-cell__bd">查看更多</view>
+          <text class="weui-cell__ft"></text>
+        </navigator>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <loading hidden="{{hidden}}">加载中…</loading>
+  </block>
+</view>
+<!--悬浮导航-->
+<view class="filter-menu {{nav_select?'active':''}}">
+  <view class="filter-menu-list ts-5">
+    <custom-ul>
+      <custom-li bindtap="nav" data-index="home">
+        <text class="iconfont icon-home"></text>
+      </custom-li>
+      <custom-li bindtap="nav" data-index="fenlei">
+        <text class="iconfont icon-fenlei"></text>
+      </custom-li>
+      <custom-li bindtap="nav" data-index="cart">
+        <text class="iconfont icon-cart"></text>
+      </custom-li>
+      <custom-li bindtap="nav" data-index="profile">
+        <text class="iconfont icon-profile"></text>
+      </custom-li>
+      <custom-li class="w"></custom-li>
+    </custom-ul>
+  </view>
+  <view class="filter-menu-title" bindtap='commonNav'></view>
+</view>
+
+<!--公用nav-start-->
+<view class="dis-box commont-fixed-footer t-c">
+  <view class="box-flex li active">
+    <image src="../../images/kan_home_active.png" mode="aspectFit"></image>
+    <view class="f-24">砍价首页</view>
+  </view>
+  <view class="box-flex li">
+    <navigator url="../bargain/list" open-type="redirect" hover-class="none">
+      <image src="../../images/bargain_list.png" mode="aspectFit"></image>
+      <view class="f-24">砍价列表</view>
+    </navigator>
+  </view>
+  <view class="box-flex li">
+    <navigator url="../bargain/order/index" open-type="redirect" hover-class="none">
+      <image src="../../images/user_order.png" mode="aspectFit"></image>
+      <view class="f-24">砍价订单</view>
+    </navigator>
+  </view>
+  <view class="box-flex li">
+    <navigator url="../bargain/myorder" open-type="redirect" hover-class="none">
+      <image src="../../images/user.png" mode="aspectFit"></image>
+      <view class="f-24">参与的砍价</view>
+    </navigator>
+  </view>
+  <block wx:if="{{bottomloading!=''}}">
+    <view class="f-28 col-3 viewshow  {{bottomloading}} ">
+      <view class="dis-box">
+        <view class="loadEffect">
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+        </view>
+        <view class="cont f-28 col-7">加载更多...</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="title-footer p-r" wx:if="{{isListData == false && viewBox == true}}">
+      <text class="f-24 col-9  cont">没有更多了</text>
+      <view class="hr"></view>
+    </view>
+  </block>
+</view>
+<!--公用nav-end-->
+<loading hidden="{{hidden}}">加载中…</loading>

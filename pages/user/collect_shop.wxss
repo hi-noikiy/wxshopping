@@ -1,0 +1,4 @@
+.store-header{padding:10px 15px;border-bottom:1rpx #e4e4e4 solid;}
+.store-header .cont .left .store-img{border:1rpx solid #eee}
+.store-header .cont .right {margin-top:20rpx;}
+.store_attention_button .button-cont{border:1px solid #888;color:#333}

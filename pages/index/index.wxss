@@ -1,0 +1,37 @@
+/*search*/
+.index-search{padding:18rpx 0 12rpx 0;position:absolute;top:0;z-index:4999;left:0;right:0;}
+.index-search.active{position:fixed;background:#ff495e}
+.index-search .left{margin-left:12px;}
+.index-search .left,.index-search .right{font-size:30rpx; align-items:center; line-height:45rpx;}
+.index-search .right{padding-right:20rpx;font-size:35rpx;}
+.index-search .icon-fenlei{display: block;margin-top:6rpx}
+.index-search .left .icon-dingwei1{top:50%;margin-top:-22rpx;}
+.index-search .left .cont{padding:0 2rpx;max-width:150rpx;overflow:hidden;margin-left:32rpx;}
+.index-search .search{border-bottom: 0; background: rgba(255,255,255,0.5); border-radius: 80rpx; overflow: hidden; position: relative; color:#fff; box-sizing:border-box; margin: 0 10px; line-height:45rpx;}
+.index-search .search .cont .icon-sousuo{margin-right:10rpx;}
+
+/*菜单*/
+.nav_ul{padding:40rpx 0}
+.nav_ul .nav_li .nav_icon{margin:0 auto;width:75rpx;height:75rpx;margin-bottom:10rpx;}
+
+/*广告样式*/
+.index-hot-img{width:750rpx;height:200rpx;padding-bottom:30rpx}
+
+/*店铺街*/
+.index-store{padding:0}
+.index-store .sale_img{width:290rpx;height:290rpx;}
+.index-store .page-column{padding:0 0 11px 11px}
+.index-store .store-more{width:200rpx;height:300rpx;}
+.index-store .store-more .cont{top:50%;left:50%;margin-top:-120rpx;margin-left:-40rpx}
+.index-store .store-more .icon-jiantou1{margin-top:23rpx;display:block;margin-left:6rpx;}
+.index-store .content{width:100%;}
+.index-store .content .li{padding:5rpx;width:80rpx;height:80rpx;}
+.index-store .store-logo{width:100rpx;height:60rpx;border:1px solid #eee;}
+.index-store .store-logo{z-index:9;left:20rpx;bottom:20rpx}
+/*热点文章*/
+.index-article{padding:8px 25px 8px 15px;border-top:1px solid #F7F7F7;}
+.index-article .icon{width:100rpx;}
+.index-article .icon image{width:70rpx;height:70rpx}
+.index-article .li{border-right:1rpx solid #F7F7F7;margin-right:18rpx}
+.index-search{ top: 128rpx}
+

@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="common-header-xian"></view>
+  <!--header-->
+  <view class="done-header">
+    <view class="money-icon">￥</view>
+    <text class="f-26 t-c col-7 m-top10">需付款金额</text>
+    <text class="f-34 col-m t-c">{{donePrice.order_amount}}</text>
+  </view>
+
+  <!--list-->
+  <view class="padding-box b-f">
+    <block wx:if="{{doneList.order_sn!=''}}">
+      <view class="dis-flex done-list" wx:for="{{doneList.order_sn}}" wx:key="order_sn">
+        <text class="flex-five done-list-left col-7">订单号</text>
+        <text class="flex-five done-list-right">{{item.order_sn}}</text>
+      </view>
+    </block>
+    <!-- <block wx:if="{{doneList.shipping_name}}">
+      <view class="dis-box done-list">
+        <text class="flex-five done-list-left col-7">快递方式</text>
+        <text class="flex-five done-list-right">{{doneList.shipping_name}}</text>
+      </view>
+    </block> -->
+  </view>
+  <view class="padding-box m-top20 ">
+    <block wx:if="{{donePrice.order_amount!=0.00}}">
+      <form bindsubmit="formSubmit" report-submit="true" style="width:100%;display:block">
+        <button form-type="submit" type="primary" size="{{primarySize}}" data-id='{{order.order_id}}' loading="{{loading}}" plain="{{plain}}"> 微信支付 </button>
+      </form>
+    </block>
+    <view class="cart-tab-item-btn f-30" bindtap="userBtn">
+      <button type="default" class="m-top20" size="{{defaultSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="orderDetail" data-index="{{index}}" hover-class="other-button-hover"> 去用户中心 </button>
+    </view>
+  </view>
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

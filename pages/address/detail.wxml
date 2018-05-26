@@ -1,0 +1,88 @@
+<!--index.wxml-->
+<block wx:if="{{addressDeatil!= undefined}}">
+  <view class="container">
+    <view class="common-header-xian"></view>
+    <form bindsubmit="saveData">
+      <view class="page__input">
+        <view class="weui-cells">
+          <view class="weui-cells weui-cells_form b-f">
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <label class="weui-label f-30">收货人</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input f-30" placeholder="请输入收货人姓名" placeholder-style="color:#999" name="consignee" value="{{ address.consignee }}" />
+              </view>
+            </view>
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <label class="weui-label f-30">手机号</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input f-30" type="number" placeholder="请输入收货人联系电话" maxlength="11" placeholder-style="color:#999" type="number" name="mobile" value="{{ address.mobile }}" />
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-cells m-top20">
+          <view class="weui-cells weui-cells_form b-f">
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <label class="weui-label f-30">所在地区</label>
+              </view>
+              <view class="weui-cell__bd">
+                <text class="infoText f-30" bindtap="translate">{{province}} {{city}} {{county}}</text>
+              </view>
+            </view>
+            <view class="weui-cell">
+              <view class="weui-cell__hd">
+                <label class="weui-label f-30">详细地址</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input f-30" placeholder="请输入街道小区楼层" placeholder-style="color:#999" type="text" name="address" value="{{ address.address }}" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="padding-box m-top20 profile-btn">
+        <button formType="submit">保 存</button>
+      </view>
+      <!--省市区弹框-->
+      <view class="animation-element-wrapper" animation="{{animation}}" style="visibility:{{show ? 'visible':'hidden'}}" bindtap="hiddenFloatView" data-id="444">
+        <view class="animation-element" catchtap="nono">
+          <text class="address-text left-bt" catchtap="hiddenFloatView" data-id="555">取消</text>
+          <text class="address-text right-bt" catchtap="checkFloatView" data-id="666">确定</text>
+          <view class="line"></view>
+
+          <picker-view indicator-style="height: 50rpx;" value="{{value}}" bindchange="bindChange" catchtap="nono">
+            <!--省-->
+            <picker-view-column>
+              <view wx:for="{{provinces}}" wx:for-item="sheng" wx:key="">
+                {{sheng.region_name}}
+              </view>
+            </picker-view-column>
+            <!--地级市-->
+            <picker-view-column>
+              <view wx:for="{{citys}}" wx:key="">
+                {{item.region_name}}
+              </view>
+            </picker-view-column>
+            <!--区县-->
+            <picker-view-column>
+              <view wx:for="{{countys}}" wx:key="">
+                {{item.region_name}}
+              </view>
+            </picker-view-column>
+          </picker-view>
+        </view>
+      </view>
+      <!--遮罩层-->
+      <view class="bargain-commont-bg hide{{showViewMol?'show':''}}">
+      </view>
+    </form>
+  </view>
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>

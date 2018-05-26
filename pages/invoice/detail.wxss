@@ -1,0 +1,8 @@
+.invoice_list{background:#fdf9f9;padding: 10px 0;font-size:30rpx;border-bottom:1px solid #f6f6f9;margin-top:20rpx;}
+.invoice_list .left{padding-left:15px;}
+.invoice_list .left .z_tai{color:#ff495e}
+.invoice_list .right{flex:4;padding-right:15px;}
+.invoice_list .right .cont{float:right;}
+.invoice_list .right .cont .list{font-size:28rpx;}
+.invoice_list .right .cont .list .icon-buoumaotubiao30{padding:0 6rpx 0 0;}
+.invoice_list .right .cont .list .icon-lajixiang{padding:0 6rpx 0 15rpx;}

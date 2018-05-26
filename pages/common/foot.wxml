@@ -1,0 +1,6 @@
+<template name="foot">
+  <view class="commont-foot">
+    <!--<view class="icon-foot"><image  src="../../images/logo.png"></image></view>-->
+    <view class="t-c cont f-26">通胜科技</view>
+  </view>
+</template>

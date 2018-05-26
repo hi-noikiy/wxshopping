@@ -1,0 +1,62 @@
+<!--index.wxml-->
+<block wx:if="{{goods!= undefined}}">
+  <view class="container">
+    <!--代言header-s-->
+    <view class="speak_header">
+      <view class="speak_bg">
+        <image src="../../images/user-speak.png" />
+      </view>
+      <view class="speak_cont">
+        <view class=" dis-box cont-section">
+          <view class="left">
+            <view class="img">
+              <image src="{{userPic !=undefined ?userPic:goods.user.pic}}"></image>
+            </view>
+          </view>
+          <view class="right">
+            <text class="name">我是{{userName!=undefined?userName:goods.user.name}}</text>
+            <text class="cont">我为《{{goods.user.shop_name}}》代言</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--代言header-e-->
+    <view class="speak_cont_box">
+      <view class="img">
+        <image src="{{goods.user.image_name}}"></image>
+      </view>
+    </view>
+    <view class="category-list  arrange b-t">
+      <navigator class="list b-f" url="../goods/index?objectId={{goods.goods_cont.id}}" hover-class="none">
+        <view class="left">
+          <view class="img">
+            <image src="{{goods.goods_cont.pic}}" mode="aspectFit" class="goodsImg" />
+          </view>
+        </view>
+        <view class="right">
+          <view class="cont">
+            <text class="f-30 title  m-top10">{{goods.goods_cont.name}}</text>
+            <view class="price f-34 col-m m-top10">{{item.shop_price_formated}}
+              <text class="del f-22">{{item.market_price_formated}}</text>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <!--推广内容-s-->
+    <view class="speak-footer-cont cont-box">
+      <text class="title">推广规则</text>
+      <text class="cont">1、点击右上角分享给你的好友；</text>
+      <text class="cont">2、分享好商品给朋友是最好的帮助；</text>
+    </view>
+    <!--推广内容-e-->
+  </view>
+  <view class="flow-fixed-footer b-f">
+    <view class="order-number group-wait-button" style="width:100%;background:#ff495e">
+      <button open-type="share">立即分享</button>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>

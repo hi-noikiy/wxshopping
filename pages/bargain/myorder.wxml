@@ -1,0 +1,55 @@
+<view class="container p-bottom">
+  <view class="common-header-xian"></view>
+  <view wx:if="{{list !=''}}">
+    <view class="category-list arrange">
+      <navigator class="list b-f" wx:for="{{list}}" wx:key="list" url="../bargain/goods?objectId={{item.id}}" hover-class="none">
+        <view class="left">
+          <view class="img">
+            <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+          </view>
+        </view>
+        <view class="right">
+          <view class="cont">
+            <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+            <view class="price f-34 col-m m-top10">{{item.shop_price}}</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view wx:else>
+    <view class="ectouch-notcont">
+      <view class="img">
+        <image src="../../images/no_content.png" mode="aspectFit" />
+      </view>
+      <text class="cont">亲，您还没有砍价商品</text>
+    </view>
+  </view>
+  <!--公用nav-start-->
+  <view class="dis-box commont-fixed-footer t-c">
+    <view class="box-flex li">
+      <navigator url="../bargain/index" open-type="redirect" hover-class="none">
+        <image src="../../images/kan_home.png" mode="aspectFit"></image>
+        <view class="f-24">砍价首页</view>
+      </navigator>
+    </view>
+    <view class="box-flex li">
+      <navigator url="../bargain/list" open-type="redirect" hover-class="none">
+        <image src="../../images/bargain_list.png" mode="aspectFit"></image>
+        <view class="f-24">砍价列表</view>
+      </navigator>
+    </view>
+    <view class="box-flex li">
+      <navigator url="../bargain/order/index" open-type="redirect" hover-class="none">
+        <image src="../../images/user_order.png" mode="aspectFit"></image>
+        <view class="f-24">砍价订单</view>
+      </navigator>
+    </view>
+    <view class="box-flex li active">
+      <image src="../../images/user-active.png" mode="aspectFit"></image>
+      <view class="f-24">参与的砍价</view>
+    </view>
+  </view>
+  <!--公用nav-end-->
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

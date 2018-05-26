@@ -1,0 +1,242 @@
+<import src="../common/foot.wxml" />
+<view class="container">
+  <block wx:if="{{index!= undefined}}">
+    <scroll-view scroll-y="true" bindscroll="scroll" scroll-top="{{scrollTop}}" style="position:absolute; top:0px; left:0; right:0; bottom:0;">
+      <!--首页banner-->
+      <view class="index-banner p-r">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class="swiper-box">
+          <block wx:for="{{index.banner}}" wx:key="banner">
+            <navigator url="{{item.link}}" open-type="navigate" hover-class="none">
+              <swiper-item>
+                <image src="{{item.pic}}" class="slide-image" />
+              </swiper-item>
+            </navigator>
+          </block>
+        </swiper>
+        <!--header-bg-->
+        <!--搜索框-->
+        <view class="index-search col-f ts-3 "><!--{{indexSearch>50 ? 'active' : ''}}-->
+          <view class="dis-box">
+            <view class="search box-flex">
+              <navigator class="cont t-c" url="../search/index" open-type="navigate" hover-class="none">
+                <text class="iconfont icon-sousuo f-26"></text>
+                <text class="f-28">搜索商品</text>
+              </navigator>
+            </view>
+            <navigator class="right p-r" url="../category/index" open-type="switchTab" hover-class="none">
+              <text class="iconfont icon-fenlei f-32 "></text>
+            </navigator>
+          </view>
+        </view>
+        <view class="linear"></view>
+      </view>
+      <!--banner下面的滚动精选-->
+      <block wx:if="{{navList}}">
+        <scroll-view scroll-x="true" style='background-color:#FFF'>
+          <view class="dis-box nav_ul b-f" style="padding-bottom:25rpx">
+              <block wx:for="{{navList}}" wx:key="navList">
+                <navigator url="{{item.link}}" hover-class="none" style='width:16.67%'>
+                  <view class="nav_icon">
+                    <image class="wh100" src="{{item.icon}}" mode="aspectFit" style='width:104rpx;height:104rpx'/>
+                  </view>
+                  <text class="f-26 col-3 t-c m-top10">{{item.name}}</text>
+                </navigator>
+              </block>
+              <block wx:for="{{navList}}" wx:key="navList">
+                <navigator url="{{item.link}}" hover-class="none" style='width:16.67%'>
+                  <view class="nav_icon">
+                    <image class="wh100" src="{{item.icon}}" mode="aspectFit" style='width:104rpx;height:104rpx'/>
+                  </view>
+                  <text class="f-26 col-3 t-c m-top10">{{item.name}}</text>
+                </navigator>
+                
+              </block>
+              <block wx:for="{{navList}}" wx:key="navList">
+                <navigator url="{{item.link}}" hover-class="none" style='width:16.67%'>
+                  <view class="nav_icon">
+                    <image class="wh100" src="{{item.icon}}" mode="aspectFit" style='width:104rpx;height:104rpx'/>
+                  </view>
+                  <text class="f-26 col-3 t-c m-top10">{{item.name}}</text>
+                </navigator>
+                
+              </block>
+              
+          </view>
+        </scroll-view>
+      </block>
+
+
+
+
+
+
+
+      <!--商城热点-->
+      <!-- <view class="dis-box index-article b-f">
+        <view class="icon">
+          <image class="" src="../../images/article-icon.png" mode="aspectFit" />
+        </view>
+        <view class="box-flex">
+          <swiper class="swiper-radio" autoplay="true" interval="3000" duration="700" circular="true" vertical="true" style="height:36px;">
+            <block wx:for="{{index.ad.article}}" wx:key="index_aricle">
+              <swiper-item>
+                <navigator class="li" url="../article/detail?objectId={{item.id}}" hover-class="none" open-type="navigate">
+                  <view class="h4 f-30 col-3 onelist-hidden">{{item.title}}</view>
+                  <view class="f-22 col-7">{{item.add_time}}</view>
+                </navigator>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <navigator class="more f-24 col-6 p-r" style="padding-top:23rpx" url="../article/index" hover-class="none" open-type="switchTab">更多
+          <text class="iconfont icon-msnui-rightmini user-orderJtou" style='top:22rpx;right:-25rpx;'></text>
+        </navigator>
+      </view>  -->
+      <!--精品推荐-->
+      <block wx:if="{{index.goods_list}}">
+        <view class="index-title m-top20">
+          <view class="cont-box b-f t-c f-32 col-3 cont">
+            <view class="f-w">Hot 供销精选</view>
+            <view class="title col-7">严选鲜果 进口采摘 冷链配送</view>
+          </view>
+        </view>
+        <!--注释滚动
+        <view class="index_sale ">
+          <scroll-view scroll-x="true">
+            <navigator wx:for-items="{{index.goods_list_new}}" wx:key="boutique_list" url="../goods/index?objectId={{item.goods_id}}" hover-class="none" style="display: inline-block;">
+              <view class="page-column">
+                <view class="sale_img">
+                  <image src="{{item.goods_thumb}}" mode="aspectFill" />
+                </view>
+                <view class="content onelist-hidden ">
+                  <text>{{item.goods_name}}</text>
+                </view>
+                <text class="price col-m f-30">{{item.shop_price_formated}}</text>
+              </view>
+            </navigator>
+          </scroll-view>
+        </view>-->
+        <view class='index_hot'>
+          <image></image>
+          <image></image>
+        </view>
+
+
+        <view class="category-list">
+          <navigator class="list b-f" wx:for="{{index.goods_list}}" wx:key="list" url="../goods/index?objectId={{item.goods_id}}" hover-class="none">
+            <view class="left">
+              <view class="img">
+                <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+              </view>
+            </view>
+            <view class="right">
+              <view class="cont">
+                <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+                <view class="price f-34 col-m m-top10">{{item.shop_price_formated}}
+                </view>
+                <view class="goods_number">
+                  <view class="dis-box  f-24 col-7 m-top10">
+                    <view class="box-flex ">库存：{{item.goods_number}}</view>
+                    <view class="box-flex t-r">销量:{{item.sales_volume}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+
+
+      </block>
+      
+      <!--店铺街-->
+      <block wx:if="{{index.ad.store}}">
+        <view class="index-title m-top20">
+          <view class="cont-box b-f t-c f-32 col-3 cont">
+            <view class="f-w">Store 店铺街</view>
+            <view class="col-7 title">热门店铺·优选商品</view>
+          </view>
+        </view>
+        <view class="index_sale index-store">
+          <scroll-view scroll-x="true" bindscrolltolower="bindDownLoad">
+            <navigator wx:for-items="{{index.ad.store}}" wx:key="boutique_list" url="../store/index?objectId={{item.user_id}}" hover-class="none" style="display: inline-block;">
+              <view class="page-column">
+                <view class="sale_img p-r">
+                  <view class="store-logo p-a">
+                    <image src="{{item.sellershopinfo.logo_thumb}}" mode="aspectFill" />
+                  </view>
+                  <image class="wh100" src="{{item.sellershopinfo.street_thumb}}" mode="aspectFill" />
+                </view>
+                <view class="content dis-flex">
+                  <view class="flex-three" wx:for="{{item.goods}}" wx:key="store_list">
+                    <view class="li">
+                      <image class="wh100" src="{{item.goods_thumb}}" mode="aspectFill" />
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </navigator>
+            <navigator url="../store/list" style="display: inline-block;" hover-class="none">
+              <view class="store-more p-r">
+                <view class="p-a f-28 col-7 cont">
+                  <view class="dis-box">
+                    <view class="box-flex">
+                      <view>查看</view>
+                      <view>更多</view>
+                    </view>
+                    <view>
+                      <text class="iconfont icon-jiantou1 f-30" style=""></text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </navigator>
+          </scroll-view>
+        </view>
+      </block>
+      <!--推荐商品列表-->
+      <block wx:if="{{index.goods_list_new}}">
+        <view class="title-hrbg" style="margin-top:10rpx">
+          <text class="cont">“猜您喜欢”</text>
+          <view class="hr"></view>
+        </view>
+        <view class="category-list">
+          <navigator class="list b-f" wx:for="{{index.goods_list}}" wx:key="list" url="../goods/index?objectId={{item.goods_id}}" hover-class="none">
+            <view class="left">
+              <view class="img">
+                <image src="{{item.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+              </view>
+            </view>
+            <view class="right">
+              <view class="cont">
+                <text class="f-30 title twolist-hidden m-top10">{{item.goods_name}}</text>
+                <view class="price f-34 col-m m-top10">{{item.shop_price_formated}}
+                  <!--<text class="del f-22">{{item.market_price_formated}}</text>-->
+                </view>
+                <view class="goods_number">
+                  <view class="dis-box  f-24 col-7 m-top10">
+                    <view class="box-flex ">库存：{{item.goods_number}}</view>
+                    <view class="box-flex t-r">销量:{{item.sales_volume}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </navigator>
+        </view>
+      </block>
+      <!-- <view class="title-footer p-r">
+        <text class="f-24 col-9  cont">我是有底线的</text>
+        <view class="hr"></view>
+      </view> -->
+      <template is="foot" />
+    </scroll-view>
+    <view class="widget-goTop" bindtap="goTop" wx:if="{{ floorstatus }}">
+      <text class="iconfont icon-fanhuidingbu"></text>
+    </view> 
+  </block>
+  <block wx:else>
+    <loading hidden="{{hidden}}">加载中…</loading>
+  </block>
+  <view style="position: absolute;top:0;;height:88rpx; padding-top:40rpx; font-size:17px; width:100%;display:flex;flex-direction:row;background-color:{{indexSearch>50 ? '#FFF' : 'transparent'}};">
+  <view style='text-align:left;padding:0 16px;font-size:17px;width:100%; margin-top:10px' >供销农产品</view>
+</view>
+</view>

@@ -1,0 +1,60 @@
+
+<block wx:if="{{cateData!=''}}">
+  <view class="container">
+    <view class="common-header-xian"></view>
+    <!--搜索框-->
+    <view class="common-search-box b-f">
+      <navigator class="common-search " open-type="navigate" url="../search/index" hover-class="none">
+        <view class="search t-c">
+          <icon type="search" class="text-center" size="{{searchSize}}" color="{{searchColor}}" />
+          <text>{{searchName}}</text>
+        </view>
+      </navigator>
+    </view>
+    <view class="cate-content">
+      <!-- left s -->
+      <scroll-view class="left" scroll-y="true">
+        <block wx:for="{{cateData}}" wx:key="cateData">
+          <text class="type-nav {{curNav == item.id ? 'selected' : ''}}" bindtap="selectNav" data-index="{{index}}" data-id="{{item.id}}">{{item.name}}</text>
+        </block>
+      </scroll-view>
+      <!-- left e -->
+      <scroll-view class="right b-f" scroll-y="true" scroll-top="{{scrollTop}}">
+        <!-- <view wx:if="{{cateRight[curIndex]}}"> -->
+        <view class="cont">
+          <view class="box">
+            <!--二级分类-s-->
+            <block wx:for="{{cateData[curIndex].cat_id}}" wx:for-index="attr_id" wx:key="cateData">
+              <navigator url="../category/product_list?id={{item.id}}&name={{item.name}}" hover-class="none">
+                <text class="title">{{item.name}}</text>
+              </navigator>
+              <view class="content dis-flex">
+                <view wx:for="{{item.cat_id}}" wx:for-index="attr_id_child" wx:for-item="item" wx:key="cit" class="flex-three" data-list="{{index}}">
+                  <navigator url="../category/product_list?id={{item.id}}&name={{item.name}}" hover-class="none">
+                    <view id="{{item.id}}" class="img">
+                      <image src="{{item.cat_img}}"></image>
+                    </view>
+                    <text>{{item.name}}</text>
+                  </navigator>
+                </view>
+              </view>
+            </block>
+            <!--二级分类-e-->
+          </view>
+        </view>
+        <!-- </view>
+    <view wx:else>
+      <view class="ectouch-notcont">
+        <view class="img">
+          <image src="../../images/no_content.png" mode="aspectFit" />
+        </view>
+        <text class="cont">亲，请稍等片刻</text>
+      </view>
+    </view> -->
+      </scroll-view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>

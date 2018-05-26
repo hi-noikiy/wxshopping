@@ -1,0 +1,126 @@
+<view class="container p-bottom">
+  <view class="common-header-xian"></view>
+  <!--订单分类-->
+  <view class=" goods-detail-box">
+    <view class="header f-28 col-3 dis-box">
+      <view class='box-flex {{current == 0?"active":""}}' data-index="0" catchtap="bindHeaderTap">全部订单</view>
+      <view class='box-flex {{current == 1?"active":""}}' data-index="1" bindtap="bindHeaderTap">待付款</view>
+      <view class='box-flex {{current == 2?"active":""}}' data-index="2" bindtap="bindHeaderTap">待收货</view>
+    </view>
+    <!--遮罩层-->
+    <view class="bargain-commont-bg hide{{showViewNav?'show':''}}">
+    </view>
+    <scroll-view scroll-y="true" style="height:{{scrollHeight}}px;" bindscrolltolower="bindDownLoad">
+      <view class="wrapper">
+        <view wx:if="{{orders!=''}}">
+          <block wx:for="{{orders}}" wx:key="orders">
+            <view class="m-top20 ">
+              <view class="order-box b-f">
+                <view class="order-header dis-flex">
+                  <view class="flex-box">
+                    <text class="title">{{item.shop_name}}</text>
+                  </view>
+                  <view class="flex-box">
+                    <text class="cont">{{item.pay_status}} {{item.shipping_status}} {{item.order_status}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="order-box b-f">
+                <view class="order-cont">
+                  <view class="order-num">
+                    <text>订单号：</text>{{item.order_sn}}
+                    <text class="f-22  {{item.extension_code!=''?'bar-btn':''}}">{{item.extension_code!=''?'砍价订单':''}}</text>
+                  </view>
+                  <view class="time">
+                    <text>{{item.add_time}}</text>
+                  </view>
+                </view>
+              </view>
+              <view class="order-box order-img_list">
+                <view class="order-shop dis-flex">
+                  <view class="order-list-box dis-flex" bindtap="siteDetail" data-index="{{index}}">
+                    <view class="left">
+                      <view class="dis-flex">
+                        <block wx:for="{{item.goods}}" wx:key="goods">
+                          <view class="order-shop-left">
+                            <image src="{{item.goods_thumb}}"></image>
+                          </view>
+                          <!-- <view class="order-right-name twolist-hidden">{{item.goods_name}}</view> -->
+                        </block>
+                      </view>
+                    </view>
+                    <view class="right p-r">
+                      <text class="goods-number">共{{item.total_number}}件</text>
+                      <text class="iconfont icon-xiangyoujiantou user-orderJtou"></text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view class="order-box b-f">
+                <view class="order-btn dis-flex">
+                  <view class="order-left">
+                    <view class="text">合计：
+                      <text class="col-m">{{item.total_amount_formated}}</text>
+                    </view>
+                  </view>
+                  <view class="order-right">
+                    <view class="dis-flex">
+                      <view class="flex-box" wx:if="{{item.pay_status == '未付款'}}">
+                        <view class="btn-default" bindtap='cancel_order' data-id="{{item.order_id}}">取消</view>
+                      </view>
+                      <view class="" wx:if="{{item.pay_status == '未付款'}}">
+                        <form bindsubmit="pay_order" report-submit="true" data-id="{{item.order_id}}">
+                          <view class="btn-main form_id">
+                            <button form-type="submit"> 去付款 </button>
+                          </view>
+                        </form>
+                      </view>
+                      <view class="flex-box" wx:if="{{item.shipping_status == '已发货'}}">
+                        <view class="btn-main" bindtap='confirm_order' data-id="{{item.order_id}}">确认收货</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view wx:else>
+          <view class="ectouch-notcont">
+            <view class="img">
+              <image src="../../../images/no_content.png" mode="aspectFit" />
+            </view>
+            <text class="cont">亲，您还没有订单信息哦！</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!--公用nav-start-->
+  <view class="dis-box commont-fixed-footer t-c">
+    <view class="box-flex li">
+      <navigator url="../../bargain/index" open-type="redirect" hover-class="none">
+        <image src="../../../images/kan_home.png" mode="aspectFit"></image>
+        <view class="f-24">砍价首页</view>
+      </navigator>
+    </view>
+    <view class="box-flex li">
+      <navigator url="../../bargain/list" open-type="redirect" hover-class="none">
+        <image src="../../../images/bargain_list.png" mode="aspectFit"></image>
+        <view class="f-24">砍价列表</view>
+      </navigator>
+    </view>
+    <view class="box-flex li active">
+      <image src="../../../images/user_order_active.png" mode="aspectFit"></image>
+      <view class="f-24">砍价订单</view>
+    </view>
+    <view class="box-flex li">
+      <navigator url="../../bargain/myorder" open-type="redirect" hover-class="none">
+        <image src="../../../images/user.png" mode="aspectFit"></image>
+        <view class="f-24">参与的砍价</view>
+      </navigator>
+    </view>
+  </view>
+  <!--公用nav-end-->
+</view>
+<loading hidden="{{hidden}}">加载中…</loading>

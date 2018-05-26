@@ -1,0 +1,4 @@
+.profile-list{padding: 24rpx 0; border-bottom: 1px solid #f6f6f9;}
+.profile-list .admin{font-size: 30rpx; color: #333;}
+.address-detail{font-size: 30rpx; width: 100%;}
+.profile-btn button{background: #ff495e; color: white;} 

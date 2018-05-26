@@ -1,0 +1,16 @@
+.logistics .header .li{padding-top:10rpx}
+.logistics .header .li .right .icon-kefu{padding-right:10rpx;}
+.logistics-box .li .cont-view{-webkit-box-flex: 1; -webkit-flex: 1; flex: 1; padding: 15px 0;}
+.logistics-box .li{position: relative; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap;}
+.logistics-box .li:not(:last-child)::after{content: ""; position: absolute; z-index: 1; pointer-events: none; background-color: #e5e5e5; width: 1px; top: 0; bottom: 0; left: 0; top: 37px; left: 10px; bottom: -20px;}
+.logistics-box .li .cont-view{-webkit-box-flex: 1; -webkit-flex: 1; flex: 1; padding: 15px 0;}
+.logistics-box .li{position: relative; display: -webkit-box; display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap;}
+.logistics-box .li:not(:last-child)::after{content: ""; position: absolute; z-index: 1; pointer-events: none; background-color: #e5e5e5; width: 1px; top: 0; bottom: 0; left: 0; top: 37px; left: 10px; bottom: -20px;}
+.logistics-box .li .i_status.type_dot{margin: 24px 15px 0 5px; width: 10px; height: 10px; border-radius: 5px; background-color: #ccc;}
+.logistics-box .li .text{color: #333; font-size: 14px; line-height: 1.35em;}
+.logistics-box .li .time{font-size: 12px; color: #999;}
+.logistics-box .li .i_status{position: relative; margin: 15px 10px 0 0; width: 20px; height: 20px; line-height: 20px; font-size: 10px; text-align: center; border-radius: 10px; color: #666; background-color: #f7f7f7;}
+.logistics-box .li:first-child .text, .logistics-box .li:first-child .time{color: #e4393c;}
+.logistics-box .li:first-child .i_status{color: #fff; background-color: #e4393c;}
+.logistics-box .li:first-child .i_status.type_dot::after{content: ""; position: absolute; box-sizing: border-box; top: 50%; left: 50%; margin-top: -9px; margin-left: -9px; width: 18px; height: 18px; border-radius: 9px; border: 1px solid #e4393c;}
+

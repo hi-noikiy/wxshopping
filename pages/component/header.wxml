@@ -1,0 +1,21 @@
+<import src="../common/foot.wxml" />
+<view
+class="header {{[isx ? 'isx' : '', isAndroid ? 'android' : '']}}">
+  <view class="header-placeholder" wx:if="{{fixed}}" />
+  <view class="header-wrap" style="{{fixed ? 'position:fixed' : ''}};background-color:{{backgroundColor}};color:{{color}};">
+    <button class="back" bind:tap="backFunction" wx:if="{{back}}"></button>
+    <view class="header-title" style='text-align:{{align=="center"?"center":"left"}}; width:{{align=="center"?"100%":"90px"}}'>
+      <slot></slot>
+    </view>
+    <block class="left p-r" bindtap="chooseLocation" wx:if='{{dingwei}}' >
+      <block wx:if='{{address != "kong"}}'>
+        <text class="cont f-28">{{address}}</text>
+      </block>
+      <block wx:else>
+        <text class="cont">定位</text>
+      </block>
+      <text class="iconfont icon-xiajiantous f-22"></text>
+    </block>
+    <view class="header-right" wx:if="{{back}}" />
+  </view>
+</view>

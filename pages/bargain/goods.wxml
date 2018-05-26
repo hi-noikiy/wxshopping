@@ -1,0 +1,601 @@
+<import src="../../wxParse/wxParse.wxml" />
+<block wx:if="{{goodsCont!= undefined}}">
+  <scroll-view scroll-y="true" bindscroll="scroll" scroll-top="{{scrollTop}}" style="position:absolute; top:0; left:0; right:0; bottom:0;">
+    <view class="container">
+      <view class="common-header-xian"></view>
+      <block class="" wx:if="{{addCont.add_bargain!=0 && addCont.bs_id!=0 && addCont.bargain_join!=0}}">
+        <!--已砍价-->
+        <block wx:if="{{bargainInfo!=''}}">
+          <view class="dis-box bargain-user padding-all">
+            <view class="left">
+              <view class="header">
+                <image src="{{bargainInfo.user_picture}}" />
+              </view>
+            </view>
+            <view class="box-flex right">
+              <view class="h4 f-30 col-3">{{bargainInfo.user_name}}</view>
+              <view class="p f-26 col-3 m-top10">您的朋友邀请您去帮他砍价喽！</view>
+            </view>
+          </view>
+        </block>
+        <view class="group-list">
+          <view class=" cont-box dis-box b-f item ">
+            <view class="user-left">
+              <image src="{{addCont.goods_thumb}}" mode="aspectFit" class="goodsImg" />
+            </view>
+            <view class="box-flex user-right p-r">
+              <view class="f-30 col-3 twolist-hidden m-top10 goods-title" style="height:80rpx;">
+                <text class="tag">砍</text>{{addCont.goods_name}}</view>
+              <view wx:if="{{addCont.attr_name}}" class="col-7 f-26">{{addCont.attr_name}}</view>
+              <view class="dis-box f-26 col-7" style="margin-top:45rpx;">
+                <view>{{addCont.final_price?'砍后价':'原价'}}：</view>
+                <view class="col-m">
+                  <block wx:if="{{goods_price}}">
+                    <!--属性价格-->
+                    <block wx:if="{{addCont.final_price}}">
+                      <!--砍后价格-->
+                      <text>￥{{addCont.final_price}}</text>
+                    </block>
+                    <block wx:else>
+                      {{goods_price}}
+                    </block>
+                  </block>
+                  <block wx:else>
+                    <!--默认价格-->
+                    {{goodsCont.goods_info.goods_price}}
+                  </block>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="b-f" style="padding:0 15rpx">
+          <view class="title-hrbg-team">剩余
+            <view class="span color-dark" id="leftTime">
+              <text class="voteText countDownTimeText">{{countDownDay}}</text>
+              <text class="name col-s">:</text>
+              <text class=" voteText countDownTimeText">{{countDownHour}}</text>
+              <text class="name col-s">:</text>
+              <text class="voteText countDownTimeText">{{countDownMinute}}</text>
+              <text class="name col-s"> :</text>
+              <text class="voteText countDownTimeText">{{countDownSecond}}</text>
+            </view>结束
+            <hr/>
+          </view>
+        </view>
+      </block>
+
+      <block wx:else>
+        <!--没有砍价内容-->
+        <!--详情相册-->
+        <view class="goods-swiper p-r" bindtap="imgPreview">
+          <swiper autoplay="true" bindchange="setCurrent" indicator-dots="true" interval="4000" circular="true" duration="1000" class="goods-box" style="border-bottom:none;">
+            <block wx:for="{{goodsCont.goods_img}}" wx:key="goodsImg">
+              <swiper-item>
+                <image src="{{item}}" mode="aspectFill" class="slide-image" />
+              </swiper-item>
+            </block>
+          </swiper>
+          <view class="goods-bargain-img">距离活动结束还有
+            <text class="voteText countDownTimeText">{{countDownDay}}</text>
+            <text class="name">天</text>
+            <text class=" voteText countDownTimeText">{{countDownHour}}</text>
+            <text class="name">时</text>
+            <text class="voteText countDownTimeText">{{countDownMinute}}</text>
+            <text class="name"> 分</text>
+            <text class="voteText countDownTimeText">{{countDownSecond}}</text>
+            <text class="name">秒</text>
+          </view>
+          <view class="num" style="margin-top:-140rpx;">
+            <text>{{currentIndex>9?currentIndex:currentIndex}}</text>
+            <text>/{{goodsCont.goods_img.length>9?goodsCont.goods_img.length:goodsCont.goods_img.length}}</text>
+          </view>
+        </view>
+        <view class="cont-box b-f goods-cont b-f" style="padding-bottom:0">
+          <!--标题-->
+          <view class="title dis-box">
+            <text class="title f-31 twolist-hidden box-flex">
+             <text class="tag">砍</text>{{goodsCont.goods_info.goods_name}}</text>
+          </view>
+          <view class="price dis-box m-top10">
+            <view class="f-22 col-7" style="padding:24rpx 15rpx 0 0">{{addCont.final_price?'砍后价':'原价'}}</view>
+            <view class="col-m m-top10">
+              <block wx:if="{{goods_price}}">
+                <!--属性价格-->
+                <block wx:if="{{addCont.final_price}}">
+                  <!--砍后价格-->
+                  <text class="f-22">￥</text>{{addCont.final_price}}
+                </block>
+                <block wx:else>
+                  {{goods_price}}
+                </block>
+              </block>
+              <block wx:else>
+                <!--默认价格-->
+                {{goodsCont.goods_info.goods_price}}
+              </block>
+
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class="goods-cont cont-box b-f" style='padding-top:6rpx'>
+        <view class="raise-progressBar dis-box p-r" style="margin:18rpx 20rpx 5rpx 20rpx;">
+          <view class="plan-left plan-common"></view>
+          <view class="wrap box-flex" style="border-radius: 0">
+            <view class="bar" style="width:{{goodsCont.goods_info.bargain_bar}}%;">
+              <i class="color" style="background:#F72A7F"></i>
+            </view>
+          </view>
+          <view class="plan-right plan-common"></view>
+        </view>
+        <view class="sales f-28 dis-box">
+          <view class="box-flex col-6">
+            <block wx:if="{{property_price.target_price}}">
+              底价{{property_price.target_price}}
+            </block>
+            <block wx:else>
+              底价{{goodsCont.goods_info.target_price}}
+            </block>
+          </view>
+          <view class="box-flex t-r col-6">
+            原价{{goodsCont.goods_info.shop_price}}</view>
+        </view>
+        <!--参与人数-->
+        <block wx:if="{{bargainInfo!=''}}">
+          <view class="bargain-tip dis-box">
+            <view class="join">已有
+              <text class="number">{{goodsCont.goods_info.total_num}}</text>人发起砍价</view>
+            <text class="triangle"></text>
+            <view class="order">
+              <view class="" style="height:34rpx; line-height:34rpx; background: #fc3; color: #000; font-size: 1.2rem;margin-top:6rpx">
+                <swiper class="swiper-radio" autoplay="true" interval="3000" duration="1000" circular="true" style="height:34rpx;line-height:34rpx">
+                  <block wx:for="{{goodsCont.bargain_list}}" wx:key="bargain_list">
+                    <swiper-item>
+                      <view class="f-24">
+                        <text class="col-m">{{item.user_name}}</text>为您砍了
+                        <text class="col-m">{{item.subtract_price}}</text>元</view>
+                    </swiper-item>
+                  </block>
+                </swiper>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <!--已砍价-->
+      <block wx:if="{{bargainInfo!=''}}">
+        <view class="dis-box bargain-user padding-all">
+          <view class="left">
+            <view class="header">
+              <image src="{{bargainInfo.user_picture}}" />
+            </view>
+          </view>
+          <view class="box-flex right">
+            <view class="h4 f-30 col-3">{{bargainInfo.user_name}}
+              <text class="sapn">当前发起砍价排名：{{bargainInfo.rank}}</text>
+            </view>
+            <view class="p f-26 col-3 m-top10">您已经帮好友砍下了一刀，共砍掉了
+              <text class="em col-m">{{bargainInfo.subtract_price}}</text>元</view>
+          </view>
+        </view>
+      </block>
+      <!--砍价玩法-->
+      <view class="dis-box b-f goods-property-box bargain-play m-top20 " style="border-bottom:1px solid #f6f6f9" bindtap='bargainPlay'>
+        <view class="box-flex col-3 f-31">砍价玩法</view>
+        <view class="f-26 col-7 more m-top4">查看更多</view>
+        <view class="goods-property-jianTou">
+          <text class="iconfont icon-msnui-rightmini user-orderJtou"></text>
+        </view>
+      </view>
+      <view class=" b-f goods-property-box  common-title-box">
+        <view class="dis-box group-detail-cont bargain-detail-cont f-03 text-c col-6 p-r">
+          <view class="box-flex p-r">
+            <view class="num-left">
+              <text class="em f-24">1</text>
+              <text class="iconfont icon-dianji"></text>
+            </view>
+            <view class="p f-24 t-c">参与砍价</view>
+            <view class="n-list-xian-first p-a"></view>
+          </view>
+          <view class="box-flex p-r">
+            <view class="num-left">
+              <text class="em f-24">2</text>
+              <text class="iconfont icon-shehuituanti"></text>
+            </view>
+            <view class="p f-24 t-c">邀友帮砍</view>
+            <view class="n-list-xian p-a"></view>
+          </view>
+          <view class="box-flex p-r">
+            <view class="num-left">
+              <text class="em f-24">3</text>
+              <text class="iconfont icon-daojianfu"></text>
+            </view>
+            <view class="p f-24 t-c">砍到底价</view>
+            <view class="n-list-xian p-a"></view>
+          </view>
+          <view class="box-flex p-r">
+            <view class="num-left">
+              <text class="em f-24">4</text>
+              <text class="iconfont icon-wancheng1"></text>
+            </view>
+            <view class="p f-24 t-c">下单购买</view>
+            <view class="n-list-xian-last p-a"></view>
+          </view>
+        </view>
+      </view>
+
+      <!--砍价用户列表-->
+      <block wx:if="{{goodsCont.bargain_list!=''|| goodsCont.bargain_ranking!=''}}">
+        <view class="top-nav m-top20 b-f b-b">
+          <view class="top-nav-bar">
+            <view bindtap="toFriends" id="top-nav-bar-{{!hiddenFriends ? true : 0}}">
+              <span>亲友帮</span>
+            </view>
+            <view bindtap="toRank" id="top-nav-bar-{{!hiddenRank ? true : 0}}">
+              <span>排行榜</span>
+            </view>
+          </view>
+        </view>
+        <!--亲友帮-->
+        <view hidden="{{hiddenFriends}}" class="order">
+          <block wx:if="{{goodsCont.bargain_list==''}}">
+            <view class="ectouch-notcont" style="margin:50rpx 100rpx;">
+              <view class="img">
+                <image src="../../images/no_content.png" mode="aspectFit" />
+              </view>
+              <text class="cont">亲,您还没有亲友砍价</text>
+            </view>
+          </block>
+          <block wx:else>
+            <block wx:for="{{goodsCont.bargain_list && bargain_list}}" wx:key="bargain_list">
+              <view class="goods-bargain-list b-f">
+                <view class="dis-box li">
+                  <view class="left">
+                    <view class="header">
+                      <image src="{{item.user_picture}}" />
+                    </view>
+                  </view>
+                  <view class="box-flex right">
+                    <view class="h4 f-28 col-3">{{item.user_name}}
+                      <view class="fr f-26 col-7">砍掉
+                        <text class="col-m ">{{item.subtract_price}}</text>元</view>
+                    </view>
+                    <view class="f-22 col-7">{{item.add_time}}</view>
+                  </view>
+                </view>
+              </view>
+            </block>
+            <block wx:if="{{addCont.bargain_num>'2'}}">
+              <view class="bargain-friends-more f-26 col-3 cont-box b-f t-c" bindtap='bargainFriendsMore'>查看更多</view>
+            </block>
+          </block>
+        </view>
+        <!--排行榜-->
+        <view hidden="{{hiddenRank}}" class="address">
+          <block wx:if="{{goodsCont.bargain_ranking==''}}">
+            <view class="ectouch-notcont" style="margin:50rpx 100rpx;">
+              <view class="img">
+                <image src="../../images/no_content.png" mode="aspectFit" />
+              </view>
+              <text class="cont">亲,您没有排行榜数据</text>
+            </view>
+          </block>
+          <block wx:else>
+            <block wx:for="{{goodsCont.bargain_ranking && bargain_ranking}}" wx:key="bargain_ranking">
+              <view class="goods-bargain-list b-f">
+                <view class="dis-box li">
+                  <view class="first-img">
+                    <image wx:if="{{item.rank=='1'}}" src="../../images/rank-1.png" />
+                    <image wx:if="{{item.rank=='2'}}" src="../../images/rank-2.png" />
+                    <image wx:if="{{item.rank=='3'}}" src="../../images/rank-3.png" />
+                    <text wx:if="{{item.rank>3}}" class="rank f-30 col-3">{{item.rank}}</text>
+                  </view>
+                  <view class="left">
+                    <view class="header">
+                      <image src="{{item.user_picture}}" />
+                    </view>
+                  </view>
+                  <view class="box-flex right">
+                    <view class="h4 f-28 col-3 m-top10">{{item.user_name}}
+                      <view class="fr f-26 col-7">砍掉
+                        <text class="col-m ">{{item.money}}</text>元</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </block>
+            <block wx:if="{{addCont.ranking_num>'2'}}">
+              <view class="bargain-friends-more f-26 col-3 cont-box b-f t-c" bindtap='bargainRanksMore'>查看更多</view>
+            </block>
+          </block>
+        </view>
+      </block>
+      <!--精品推荐-->
+      <block wx:if="{{goodsCont.bargain_hot!=''}}">
+        <view class="weui-panel__hd b-f m-top20">砍价商品</view>
+        <view class="index_sale p-top20">
+          <scroll-view scroll-x="true">
+            <navigator wx:for="{{goodsCont.bargain_hot}}" wx:key="boutique_list" url="../bargain/goods?objectId={{item.id}}" hover-class="none" style="display: inline-block;">
+              <view class="page-column">
+                <view class="sale_img">
+                  <image src="{{item.goods_thumb}}" mode="aspectFill" />
+                </view>
+                <view class="content onelist-hidden ">
+                  <text>{{item.goods_name}}</text>
+                </view>
+                <text class="price col-m f-30">{{item.shop_price}}</text>
+              </view>
+            </navigator>
+          </scroll-view>
+        </view>
+      </block>
+      <!--商品描述-->
+      <view class="p-bottom">
+        <view class="top-nav m-top20 b-f b-b">
+          <view class="top-nav-bar">
+            <view bindtap="toOrder" id="top-nav-bar-{{!hiddenOrder ? true : 0}}">
+              <span>商品描述</span>
+            </view>
+            <view bindtap="toAddress" id="top-nav-bar-{{!hiddenAddress ? true : 0}}">
+              <span>规格参数</span>
+            </view>
+          </view>
+        </view>
+        <!--商品描述-->
+        <view hidden="{{hiddenOrder}}" class="order">
+          <view wx:if="{{goods.goods_desc!= ''}}">
+            <view class="b-f goods-detail-box">
+              <view class="goods-cont-li">
+                <template is="wxParse" data="{{wxParseData:goods_desc.nodes}}" />
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <view class="ectouch-notcont">
+              <view class="img">
+                <image src="../../images/no_content.png" mode="aspectFit" />
+              </view>
+              <text class="cont">亲,此处暂无详情数据</text>
+            </view>
+          </view>
+        </view>
+        <!--规格参数-->
+        <view hidden="{{hiddenAddress}}" class="address">
+          <view wx:if="{{parameteCont!=''}}">
+            <block wx:for="{{parameteCont}}" wx:key="parameteCont">
+              <view class="dis-box paramete-cont" wx:for="{{item}}" wx:key="item">
+                <view class="li flex-five">{{item.name}}：</view>
+                <view class="li flex-five">
+                  <text>{{item.value}}</text>
+                </view>
+              </view>
+            </block>
+          </view>
+          <view wx:else>
+            <view class="ectouch-notcont">
+              <view class="img">
+                <image src="../../images/no_content.png" mode="aspectFit" />
+              </view>
+              <text class="cont">亲,此处暂无规格数据</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 提交订单 -->
+      <!--自己砍价-->
+      <block wx:if="{{addCont.add_bargain==0 && addCont.bs_id==0 && addCont.bargain_join ==0}}">
+        <view class="footer-fixed f-34">
+          <view class="order-bt" style="width:100%" bindtap="addBargain"> 我要参与</view>
+        </view>
+      </block>
+      <block class="" wx:if="{{addCont.add_bargain!=0 && addCont.bs_id!=0 && addCont.bargain_join ==0}}">
+        <view class="footer-fixed f-34">
+          <form bindsubmit="formSubmit" report-submit="true" style="width:100%;display:block">
+            <view class="order-bt order-number" id="checkout" style="width:100%;display:block">
+              <button form-type="submit" type="default" size="default">去砍一刀</button>
+            </view>
+          </form>
+        </view>
+      </block>
+      <!--自己砍价-->
+      <block class="" wx:if="{{addCont.add_bargain!=0 && addCont.bs_id!=0 && addCont.bargain_join!=0}}">
+        <view class="footer-fixed f-34">
+          <view class="order-number group-wait-button">
+            <button open-type="share">让朋友帮砍</button>
+          </view>
+          <view class="order-bt" style="width:50%" id="checkout" bindtap="bargainCheckout"> 立即购买</view>
+        </view>
+      </block>
+      <!--分享默认数据-->
+
+      <block wx:if="{{addCont.add_bargain==0 && addCont.bs_id!=0 && addCont.bargain_join ==0}}">
+        <view class="footer-fixed f-34">
+          <form bindsubmit="formSubmit" report-submit="true" style="width:100%;display:block">
+            <view class="order-number" style="width:100%">
+              <button form-type="submit" type="default" style="width:100%;">帮TA砍价</button>
+            </view>
+          </form>
+          <view class="order-bt" style="width:100%" bindtap="addBargain"> 我要参与</view>
+        </view>
+      </block>
+      <!--分享后已帮砍-->
+      <block wx:if="{{addCont.add_bargain==0 && addCont.bs_id!=0 && addCont.bargain_join!=0}}">
+        <view class="footer-fixed f-34">
+          <view class="order-number">已帮TA砍价</view>
+          <view class="order-bt" style="width:50%" bindtap="addBargain"> 我要参与</view>
+        </view>
+      </block>
+    </view>
+
+  </scroll-view>
+  <view class="widget-goTop" bindtap="goTop" wx:if="{{ floorstatus }}">
+    <text class="iconfont icon-fanhuidingbu"></text>
+  </view>
+  <!--亲友帮模态框-->
+  <view class="bargain-mol bargain-friends-mol ts-3 {{showViewFriendsMore?'active':''}}">
+    <view class="header cont-box f-28 col-3">亲友帮</view>
+    <scroll-view scroll-y="true" class="max-cont">
+      <block wx:for="{{goodsCont.bargain_list}}" wx:key="bargain_list">
+        <view class="goods-bargain-list b-f">
+          <view class="dis-box li">
+            <view class="left">
+              <view class="header">
+                <image src="{{item.user_picture}}" />
+              </view>
+            </view>
+            <view class="box-flex right">
+              <view class="h4 f-28 col-3">{{item.user_name}}
+                <view class="fr f-26 col-7">砍掉
+                  <text class="col-m ">{{item.subtract_price}}</text>元</view>
+              </view>
+              <view class="f-22 col-7">{{item.add_time}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="footer f-28 col-6 cont-box t-c" bindtap='bargainFriendsMore'>关闭</view>
+  </view>
+  <!--排行榜模态框-->
+  <view class="bargain-mol bargain-rank-mol ts-3 {{showViewRankMore?'active':''}}">
+    <view class="header cont-box f-28 col-3">排行榜</view>
+    <scroll-view scroll-y="true" class="max-cont">
+      <block wx:for="{{goodsCont.bargain_ranking}}" wx:key="bargain_ranking">
+        <view class="goods-bargain-list b-f">
+          <view class="dis-box li">
+            <view class="first-img">
+              <image wx:if="{{item.rank=='1'}}" src="../../images/rank-1.png" />
+              <image wx:if="{{item.rank=='2'}}" src="../../images/rank-2.png" />
+              <image wx:if="{{item.rank=='3'}}" src="../../images/rank-3.png" />
+              <text wx:if="{{item.rank>3}}" class="rank f-30 col-3">{{item.rank}}</text>
+            </view>
+            <view class="left">
+              <view class="header">
+                <image src="{{item.user_picture}}" />
+              </view>
+            </view>
+            <view class="box-flex right">
+              <view class="h4 f-28 col-3 m-top10">{{item.user_name}}
+                <view class="fr f-26 col-7">砍掉
+                  <text class="col-m ">{{item.money}}</text>元</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+    <view class="footer f-28 col-6 cont-box t-c" bindtap='bargainRanksMore'>关闭</view>
+  </view>
+
+  <!--单独购买属性弹框-->
+  <view class="group-property-mol bargain-mol ts-3 {{showViewProperty?'active':''}}">
+    <view class="cart_close modal-close" bindtap="onChangeShowState">
+      <icon type="clear" size="20" color="#ccc" />
+    </view>
+    <view class="cont-box">
+      <view class="dis-box cart_product">
+        <view class="cart_product_img">
+          <image src="{{property.attr_img?property.attr_img:goodsCont.goods_info.goods_thumb}}" />
+        </view>
+        <view class="cart_product_info">
+          <view class="onelist-hidden f-30 h4">{{goodsCont.goods_info.goods_name}}</view>
+          <view class="cart_product_price">{{goods_price}}</view>
+          <view class="cart_product_repertory">库存 {{stock}} 件</view>
+        </view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" class="max-cont">
+      <view class="cart">
+        <view class="modal_cont_box">
+          <block wx:if="{{item.values[0].label!=''}}" wx:for="{{properties}}" wx:for-index="attr_id" wx:key="carModels">
+            <view class="cf tmall-types common-title-box dis-box">
+              <text class="tipstxt l-title" id="{{attr_id}}">{{item.name}}</text>
+              <view class="box-flex">
+                <view class="cf cartypelist" wx:for="{{item.values}}" wx:for-index="attr_id_child" wx:key="carModelChild">
+                  <block wx:if="{{item.label!=''}}">
+                    <block wx:if="{{item.checked}}">
+                      <view class="cartypeitem cur" id="{{item.id}}" bindtap="modelTap">{{item.label}}</view>
+                    </block>
+                    <block wx:else>
+                      <view class="cartypeitem" id="{{item.id}}" bindtap="modelTap">{{item.label}}</view>
+                    </block>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class="buy_number common-title-box dis-box">
+            <view class="buyNumber f-28 l-title">
+              <text>数量</text>
+            </view>
+            <view class="selectNumber">
+              <button type="default" class="default  {{num >1  ? '' : ' default-active'}}" bindtap="down">-</button>
+              <input type="number" value="{{ num }}" bindinput="import" />
+              <button type="default" class="default" bindtap="up">+</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="footer f-28 col-6  dis-box t-c">
+      <view class="box-flex" style="width:100%" id="checkout" bindtap="addCheckout">
+        <view class="f-30">确定参与</view>
+      </view>
+    </view>
+  </view>
+  <!--砍价弹窗-->
+  <view class="bargain-friends bargain-go hide{{showViewGo?'show':''}}">
+    <view class="header f-30 col-3">砍价提示</view>
+    <view class="img">
+      <image class="k-pic" src="../../images/bargain_s.jpg" />
+    </view>
+    <view class="cont f-24">帮您砍掉了
+      <text class="col-m">{{bargainInfo.subtract_price}}</text>元</view>
+    <view class="footer f-24 col-3" bindtap="goBargainClose">我知道了</view>
+  </view>
+  <!--玩法模态框-->
+  <view class="bargain-paly-mol bargain-mol ts-3 {{showViewPlay?'active':''}}">
+    <view class="header dis-box cont-box f-28 col-3">
+      <view class="box-flex f-30">砍价玩法</view>
+      <view class="box-flex">
+        <text class="iconfont icon-guanbi" bindtap='bargainPlay'></text>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" class="max-cont">
+      <view class="ul">
+        <view class="li">1.参与活动：点击参与活动，自己砍一刀;</view>
+        <view class="li">2.邀请好友：在参与活动之后。可以点击“找亲友帮我砍” 分享给好友帮你砍价;</view>
+        <view class="li">3.砍到最低价：邀请好友砍价，砍到最低价时点击购买。</view>
+      </view>
+    </scroll-view>
+    <view class="footer f-34  t-c" bindtap='bargainPlay'>确定</view>
+  </view>
+  <!--遮罩层-->
+  <view class="bargain-commont-bg hide{{showViewMol?'show':''}}">
+  </view>
+  <!--悬浮导航-->
+  <view class="filter-menu {{nav_select?'active':''}}">
+    <view class="filter-menu-list ts-5">
+      <custom-ul>
+        <custom-li bindtap="nav" data-index="home">
+          <text class="iconfont icon-home"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="fenlei">
+          <text class="iconfont icon-fenlei"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="cart">
+          <text class="iconfont icon-cart"></text>
+        </custom-li>
+        <custom-li bindtap="nav" data-index="profile">
+          <text class="iconfont icon-profile"></text>
+        </custom-li>
+        <custom-li class="w"></custom-li>
+      </custom-ul>
+    </view>
+    <view class="filter-menu-title" bindtap='commonNav'></view>
+  </view>
+</block>
+<block wx:else>
+  <loading hidden="{{hidden}}">加载中…</loading>
+</block>
